@@ -11,12 +11,15 @@
 .container {
   position: relative;
   top: 200px;
-  background: white;
   min-width: 300px;
   max-width: 500px;
+
   margin: 0 auto;
-  border-radius: 12px;
   padding: 24px;
+
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header {
