@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="shell">
       <div class="container">
-        <img src="assets/image-qr-code.png" alt="qr-code" />
+        <img src="assets/images/image-qr-code.png" alt="qr-code" />
         <div class="text-container">
           <p class="title">Improve your front-end skills by building project</p>
           <p class="subtitle">

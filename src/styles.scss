@@ -6,6 +6,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "WorkSans-Italic";
+  src: url("./assets/fonts/WorkSans-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WorkSans";
+  src: url("./assets/fonts/WorkSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
