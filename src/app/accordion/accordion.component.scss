@@ -7,3 +7,42 @@
 
   font-family: WorkSans;
 }
+
+.container {
+  position: relative;
+  top: 200px;
+  background: white;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+
+  h2 {
+    margin: 0 12px;
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
+
+.content {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    font-weight: 600;
+  }
+
+  .icon {
+    display: flex;
+  }
+}
