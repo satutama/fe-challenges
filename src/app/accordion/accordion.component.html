@@ -2,14 +2,17 @@
   <div class="container">
     <div class="header">
       <img src="assets/images/icon-star.svg" />
+
       <h2>FAQs</h2>
     </div>
+
     <div class="content">
       <div *ngFor="let faq of faqs; index as i" class="faq">
-        <div class="question">
+        <div class="question" (click)="showFaq(i)">
           <p>{{ faq.question }}</p>
+
           <div class="icon">
-            <button mat-icon-button (click)="showFaq(i)">
+            <button mat-icon-button>
               <svg-icon
                 *ngIf="!faq.displayed"
                 src="assets/images/icon-plus.svg"
@@ -23,6 +26,7 @@
             </button>
           </div>
         </div>
+
         <div class="answer" [ngClass]="{ hidden: !faq.displayed }">
           <p>{{ faq.answer }}</p>
         </div>

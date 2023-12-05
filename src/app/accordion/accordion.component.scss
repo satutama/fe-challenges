@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
 
   font-family: WorkSans;
+  color: hsl(292, 42%, 14%);
 }
 
 .container {
@@ -41,6 +42,11 @@
 .question {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    color: hsl(292, 16%, 49%);
+  }
 
   p {
     font-weight: 600;
@@ -52,9 +58,12 @@
 }
 
 .answer {
+  color: hsl(292, 16%, 49%);
   max-height: 170px;
   opacity: 1;
   transition: max-height 0.2s ease-in, opacity 0.2s ease-in;
+  font-size: 14px;
+  line-height: 22px;
 
   &.hidden {
     max-height: 0;
