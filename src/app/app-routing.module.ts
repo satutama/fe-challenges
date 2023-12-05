@@ -4,7 +4,7 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'qr-code' },
+  { path: '', pathMatch: 'full', redirectTo: 'accordion' },
   { path: 'qr-code', component: QrCodeComponent },
   { path: 'accordion', component: AccordionComponent },
 ];
