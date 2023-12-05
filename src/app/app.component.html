@@ -4,14 +4,17 @@
   </header>
 </mat-toolbar>
 
-<mat-drawer-container>
-  <mat-drawer mode="side" opened>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
     <mat-nav-list>
       <a mat-list-item routerLink="/qr-code">QR code</a>
     </mat-nav-list>
-  </mat-drawer>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/accordion">Accordion</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-  <mat-drawer-content>
+  <mat-sidenav-content style="height: 100%">
     <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
