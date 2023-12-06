@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'accordion' },
   { path: 'qr-code', component: QrCodeComponent },
   { path: 'accordion', component: AccordionComponent },
+  { path: '**', redirectTo: 'accordion' },
 ];
 
 @NgModule({
