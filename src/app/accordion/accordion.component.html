@@ -14,14 +14,12 @@
           <div class="icon">
             <button mat-icon-button>
               <svg-icon
-                *ngIf="!faq.displayed"
-                src="assets/images/icon-plus.svg"
-                alt="icon-closed"
-              ></svg-icon>
-              <svg-icon
-                *ngIf="faq.displayed"
-                src="assets/images/icon-minus.svg"
-                alt="icon-opened"
+                [src]="
+                  faq.displayed
+                    ? 'assets/images/icon-minus.svg'
+                    : 'assets/images/icon-plus.svg'
+                "
+                [attr.alt]="faq.displayed ? 'icon-opened' : 'icon-closed'"
               ></svg-icon>
             </button>
           </div>
