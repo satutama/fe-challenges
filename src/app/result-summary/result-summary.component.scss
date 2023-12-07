@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 400px;
+  background-color: white;
+  box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.result,
+.summary {
+  height: 100%;
+  width: 200px;
+}
+
+.result {
+  background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  border-radius: 20px;
+}
+
+.summary {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}

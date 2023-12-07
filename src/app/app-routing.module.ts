@@ -15,6 +15,13 @@ const routes: Routes = [
         (mod) => mod.AccordionComponent
       ),
   },
+  {
+    path: 'result-summary',
+    loadComponent: () =>
+      import('./result-summary/result-summary.component').then(
+        (mod) => mod.ResultSummaryComponent
+      ),
+  },
   { path: '**', redirectTo: 'accordion' },
 ];
 
