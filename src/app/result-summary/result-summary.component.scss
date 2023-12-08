@@ -21,8 +21,12 @@
 }
 
 .result {
+  display: flex;
+  flex-direction: column;
+
   background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
   border-radius: 20px;
+  color: white;
 }
 
 .summary {
