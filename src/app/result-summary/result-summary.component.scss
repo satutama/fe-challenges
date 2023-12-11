@@ -148,9 +148,10 @@
   }
 
   .score {
-    color: hsl(0, 0%, 0%);
-    span:last-child {
-      color: hsl(0, 0%, 50%);
+    color: hsl(0, 0%, 50%);
+    span {
+      color: hsl(0, 0%, 0%);
+      margin-right: 6px;
     }
   }
 
