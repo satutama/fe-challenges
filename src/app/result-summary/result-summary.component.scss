@@ -153,4 +153,16 @@
       color: hsl(0, 0%, 50%);
     }
   }
+
+  button {
+    border-radius: 25px;
+    border: none;
+    margin-top: 35px;
+    padding: 12px;
+    width: 100%;
+    background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+    color: white;
+    font-family: Hanken;
+    font-size: large;
+  }
 }
