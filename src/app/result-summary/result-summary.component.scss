@@ -1,3 +1,8 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -158,9 +163,15 @@
     font-family: Hanken;
     font-size: large;
 
-    &:active {
+    &:hover {
       background-image: none;
       background-color: hsl(224, 30%, 27%);
     }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    box-shadow: 10px 15px 25px #ededed;
   }
 }
