@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'accordion' },
+  { path: '', pathMatch: 'full', redirectTo: 'result-summary' },
   {
     path: 'qr-code',
     loadComponent: () =>
@@ -22,7 +22,7 @@ const routes: Routes = [
         (mod) => mod.ResultSummaryComponent
       ),
   },
-  { path: '**', redirectTo: 'accordion' },
+  { path: '**', redirectTo: 'result-summary' },
 ];
 
 @NgModule({
