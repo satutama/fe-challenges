@@ -17,24 +17,13 @@
   <div class="summary">
     <h3>Summary</h3>
 
-    <div class="item">
-      <p class="reaction"><span class="icon"></span>Reaction</p>
-      <p class="score"><span>80</span> / 100</p>
-    </div>
-
-    <div class="item">
-      <p class="memory"><span class="icon"></span>Memory</p>
-      <p class="score"><span>92</span> / 100</p>
-    </div>
-
-    <div class="item">
-      <p class="verbal"><span class="icon"></span>Verbal</p>
-      <p class="score"><span>61</span> / 100</p>
-    </div>
-
-    <div class="item">
-      <p class="visual"><span class="icon"></span>Visual</p>
-      <p class="score"><span>72</span> / 100</p>
+    <div *ngFor="let item of data" class="item">
+      <p class="{{ item.category | lowercase }}">
+        <span class="icon"></span>{{ item.category }}
+      </p>
+      <p class="score">
+        <span>{{ item.score }}</span> / 100
+      </p>
     </div>
 
     <button>Continue</button>
