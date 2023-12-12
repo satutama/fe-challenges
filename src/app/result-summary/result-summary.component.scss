@@ -1,0 +1,166 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 20px;
+  font-family: Hanken;
+  margin-top: 100px;
+
+  h3 {
+    margin-top: 35px;
+  }
+}
+
+.result,
+.summary {
+  width: 300px;
+}
+
+.result {
+  h3 {
+    color: HSL(0, 0%, 80%);
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  border-radius: 20px;
+  color: white;
+
+  .score-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: linear-gradient(
+      hsla(256, 72%, 46%, 1),
+      hsla(241, 72%, 46%, 0)
+    );
+
+    height: 180px;
+    width: 180px;
+    margin-top: 12px;
+    border-radius: 50%;
+  }
+
+  .score,
+  .total {
+    margin: 0;
+  }
+
+  .total {
+    color: HSL(0, 0%, 80%);
+  }
+
+  .score {
+    font-size: 65px;
+    font-weight: 700;
+  }
+
+  .quality {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 30px 0 0 0;
+  }
+
+  .conclusion {
+    padding: 0 40px;
+    text-align: center;
+    color: HSL(0, 0%, 80%);
+  }
+}
+
+.summary {
+  padding: 0 25px;
+  width: 250px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-radius: 10px;
+    font-weight: 600;
+
+    + .item {
+      margin-top: 12px;
+    }
+
+    p:first-child {
+      display: flex;
+    }
+
+    .icon {
+      height: 20px;
+      width: 20px;
+      display: block;
+      margin-right: 8px;
+    }
+
+    &:has(.reaction) {
+      background-color: hsla(0, 100%, 67%, 0.1);
+      color: hsla(0, 100%, 67%);
+    }
+
+    &:has(.memory) {
+      background-color: hsla(39, 100%, 56%, 0.1);
+      color: hsla(39, 100%, 56%);
+    }
+
+    &:has(.verbal) {
+      background-color: hsla(166, 100%, 37%, 0.1);
+      color: hsla(166, 100%, 37%);
+    }
+
+    &:has(.visual) {
+      background-color: hsla(234, 85%, 45%, 0.1);
+      color: hsla(234, 85%, 45%);
+    }
+
+    .memory .icon {
+      background: url("/assets/images/icon-memory.svg");
+    }
+
+    .reaction .icon {
+      background: url("/assets/images/icon-reaction.svg");
+    }
+
+    .verbal .icon {
+      background: url("/assets/images/icon-verbal.svg");
+    }
+
+    .visual .icon {
+      background: url("/assets/images/icon-visual.svg");
+    }
+  }
+
+  .score {
+    color: hsl(0, 0%, 50%);
+    span {
+      color: hsl(0, 0%, 0%);
+      margin-right: 6px;
+    }
+  }
+
+  button {
+    border-radius: 25px;
+    border: none;
+    margin-top: 35px;
+    padding: 12px;
+    width: 100%;
+    background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+    color: white;
+    font-family: Hanken;
+    font-size: large;
+
+    &:active {
+      background-image: none;
+      background-color: hsl(224, 30%, 27%);
+    }
+  }
+}

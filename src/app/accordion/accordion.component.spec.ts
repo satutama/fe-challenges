@@ -8,8 +8,8 @@ describe('AccordionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AccordionComponent]
-    });
+    imports: [AccordionComponent]
+});
     fixture = TestBed.createComponent(AccordionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

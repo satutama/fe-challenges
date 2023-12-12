@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="result">
+    <h3>Your Result</h3>
+
+    <div class="score-container">
+      <p class="score">76</p>
+      <p class="total">of 100</p>
+    </div>
+
+    <p class="quality">Great</p>
+
+    <p class="conclusion">
+      You scored higher than 65% of the people who have taken these tests.
+    </p>
+  </div>
+
+  <div class="summary">
+    <h3>Summary</h3>
+
+    <div *ngFor="let item of data" class="item">
+      <p class="{{ item.category | lowercase }}">
+        <span class="icon"></span>{{ item.category }}
+      </p>
+      <p class="score">
+        <span>{{ item.score }}</span> / 100
+      </p>
+    </div>
+
+    <button>Continue</button>
+  </div>
+</div>
