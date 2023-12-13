@@ -22,6 +22,13 @@ const routes: Routes = [
         (mod) => mod.ResultSummaryComponent
       ),
   },
+  {
+    path: 'age-calculator',
+    loadComponent: () =>
+      import('./age-calculator/age-calculator.component').then(
+        (mod) => mod.AgeCalculatorComponent
+      ),
+  },
   { path: '**', redirectTo: 'result-summary' },
 ];
 
