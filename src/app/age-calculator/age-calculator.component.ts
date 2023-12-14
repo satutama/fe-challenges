@@ -21,4 +21,10 @@ export class AgeCalculatorComponent {
     month: null,
     year: null,
   };
+
+  public age: Birthdate | undefined;
+
+  public calculateAge() {
+    this.age = this.birthdate;
+  }
 }

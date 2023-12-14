@@ -37,19 +37,23 @@
 
     <div class="button-container">
       <hr />
-      <button type="button" class="button"></button>
+      <button type="button" class="button" (click)="calculateAge()"></button>
     </div>
   </form>
 
   <div class="result">
     <div>
-      <span>{{ birthdate.year }}</span> years
+      <span *ngIf="age; else emptyBlock">{{ age.year }}</span> years
     </div>
+
     <div>
-      <span>{{ birthdate.month }}</span> months
+      <span *ngIf="age; else emptyBlock">{{ age.month }}</span> months
     </div>
+
     <div>
-      <span>{{ birthdate.day }}</span> days
+      <span *ngIf="age; else emptyBlock">{{ age.day }}</span> days
     </div>
+
+    <ng-template #emptyBlock><span>--</span></ng-template>
   </div>
 </div>
