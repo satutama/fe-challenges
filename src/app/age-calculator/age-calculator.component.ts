@@ -26,6 +26,27 @@ export class AgeCalculatorComponent {
   public age: Birthdate | undefined;
 
   public calculateAge() {
-    this.age = this.birthdate;
+    const daysPerYear = 365.25; // account for leap years
+    const daysPerMonth = 30.44; // on average
+    const millisecondsInADay = 1000 * 60 * 60 * 24;
+
+    const parsedBirthDate = new Date(
+      `${this.birthdate.year}-${this.birthdate.month}-${this.birthdate.day}`
+    );
+
+    const timeDiff = Math.abs(Date.now() - parsedBirthDate.getTime());
+
+    const year = Math.floor(timeDiff / (millisecondsInADay * daysPerYear));
+
+    const month = Math.floor(
+      (timeDiff % (millisecondsInADay * daysPerYear)) /
+        (millisecondsInADay * daysPerMonth)
+    );
+
+    const day = Math.floor(
+      (timeDiff % (millisecondsInADay * daysPerMonth)) / millisecondsInADay
+    );
+
+    this.age = { year, month, day };
   }
 }
