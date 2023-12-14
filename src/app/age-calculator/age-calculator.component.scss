@@ -1,4 +1,5 @@
 $base-color-border: hsl(0, 0, 80%);
+$purple: hsl(259, 100%, 65%);
 
 :host {
   display: flex;
@@ -63,10 +64,20 @@ $base-color-border: hsl(0, 0, 80%);
     background-size: 36px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: hsl(259, 100%, 65%);
+    background-color: $purple;
     border-radius: 50%;
     border: none;
     padding: 30px;
+  }
+}
+
+.result {
+  font-family: "Poppins-Bold";
+  font-size: 60px;
+  font-style: italic;
+
+  span {
+    color: $purple;
   }
 }
 
