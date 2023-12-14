@@ -29,6 +29,15 @@ mat-sidenav {
   border-right: 1px solid #dbdbdb;
 }
 
+mat-sidenav-content {
+  &:has(app-age-calculator) {
+    background-color: hsl(0, 0, 95%);
+  }
+  &:has(app-qr-code) {
+    background-color: hsl(212, 45%, 89%);
+  }
+}
+
 mat-nav-list {
   padding: 0;
 }
