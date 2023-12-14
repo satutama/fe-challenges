@@ -1,3 +1,5 @@
+$base-color-border: hsl(0, 0, 80%);
+
 :host {
   display: flex;
   justify-content: center;
@@ -34,11 +36,42 @@
     padding: 0 8px;
     font-size: 20px;
     font-weight: bold;
-    border: 1px solid hsl(0, 0, 80%);
+    border: 1px solid $base-color-border;
     border-radius: 5px;
 
     &::placeholder {
       color: hsl(0, 0%, 60%);
     }
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  hr {
+    height: 0;
+    width: 100%;
+    border-top: 1px solid $base-color-border;
+  }
+
+  .button {
+    height: 50px;
+    width: 50px;
+    background-image: url("/assets/images/icon-arrow.svg");
+    background-size: 36px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: hsl(259, 100%, 65%);
+    border-radius: 50%;
+    border: none;
+    padding: 30px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .button-container {
+    width: 500px;
   }
 }
