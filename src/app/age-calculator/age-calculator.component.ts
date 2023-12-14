@@ -16,6 +16,7 @@ interface Birthdate {
   styleUrls: ['./age-calculator.component.scss'],
 })
 export class AgeCalculatorComponent {
+  public requiredError = 'This field is required';
   public birthdate: Birthdate = {
     day: null,
     month: null,

@@ -33,8 +33,8 @@ $purple: hsl(259, 100%, 65%);
 
   input {
     height: 40px;
-    width: 80px;
-    padding: 0 8px;
+    width: 85px;
+    padding: 0 25px;
     font-size: 20px;
     font-weight: bold;
     border: 1px solid $base-color-border;
@@ -43,6 +43,17 @@ $purple: hsl(259, 100%, 65%);
     &::placeholder {
       color: hsl(0, 0%, 60%);
     }
+
+    &.ng-invalid.ng-touched {
+      border-color: hsl(0, 100%, 67%);
+    }
+  }
+
+  .alert {
+    margin-top: 4px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
   }
 }
 
@@ -83,6 +94,6 @@ $purple: hsl(259, 100%, 65%);
 
 @media only screen and (min-width: 600px) {
   .button-container {
-    width: 500px;
+    width: 540px;
   }
 }

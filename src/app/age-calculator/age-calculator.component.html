@@ -1,43 +1,67 @@
 <div class="container">
-  <form #ageCalculator="ngForm">
+  <form (ngSubmit)="calculateAge()" #ageCalculator="ngForm">
     <div class="form-group">
       <div class="data">
         <label for="day">DAY</label>
+
         <input
-          type="number"
+          type="text"
           id="day"
+          required
           [(ngModel)]="birthdate.day"
           name="day"
+          #day="ngModel"
           placeholder="DD"
         />
+
+        <div *ngIf="day.invalid && (day.dirty || day.touched)" class="alert">
+          <div *ngIf="day.errors?.['required']">{{ requiredError }}</div>
+        </div>
       </div>
 
       <div class="data">
         <label for="month">MONTH</label>
+
         <input
-          type="number"
+          type="text"
           id="month"
+          required
           [(ngModel)]="birthdate.month"
           name="month"
+          #month="ngModel"
           placeholder="MM"
         />
+
+        <div
+          *ngIf="month.invalid && (month.dirty || month.touched)"
+          class="alert"
+        >
+          <div *ngIf="month.errors?.['required']">{{ requiredError }}</div>
+        </div>
       </div>
 
       <div class="data">
         <label for="year">DAY</label>
+
         <input
-          type="number"
+          type="text"
           id="year"
+          required
           [(ngModel)]="birthdate.year"
           name="year"
+          #year="ngModel"
           placeholder="YYYY"
         />
+
+        <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
+          <div *ngIf="year.errors?.['required']">{{ requiredError }}</div>
+        </div>
       </div>
     </div>
 
     <div class="button-container">
       <hr />
-      <button type="button" class="button" (click)="calculateAge()"></button>
+      <button type="submit" class="button"></button>
     </div>
   </form>
 
