@@ -2,6 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+interface Birthdate {
+  day: number | null;
+  month: number | null;
+  year: number | null;
+}
+
 @Component({
   selector: 'app-age-calculator',
   standalone: true,
@@ -9,4 +15,10 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './age-calculator.component.html',
   styleUrls: ['./age-calculator.component.scss'],
 })
-export class AgeCalculatorComponent {}
+export class AgeCalculatorComponent {
+  public birthdate: Birthdate = {
+    day: null,
+    month: null,
+    year: null,
+  };
+}

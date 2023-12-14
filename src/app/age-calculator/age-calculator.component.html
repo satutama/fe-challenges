@@ -1,18 +1,48 @@
 <div class="container">
-  <form>
-    <div class="input">
-      <label for="day">DAY</label>
-      <input type="number" id="day" name="day" />
-    </div>
+  <form #ageCalculator="ngForm">
+    <div class="form-group">
+      <div class="data">
+        <label for="day">DAY</label>
+        <input
+          type="number"
+          id="day"
+          [(ngModel)]="birthdate.day"
+          name="day"
+          placeholder="DD"
+        />
+      </div>
 
-    <div class="input">
-      <label for="month">MONTH</label>
-      <input type="number" id="month" name="month" />
-    </div>
+      <div class="data">
+        <label for="month">MONTH</label>
+        <input
+          type="number"
+          id="month"
+          [(ngModel)]="birthdate.month"
+          name="month"
+          placeholder="MM"
+        />
+      </div>
 
-    <div class="input">
-      <label for="year">DAY</label>
-      <input type="number" id="year" name="year" />
+      <div class="data">
+        <label for="year">DAY</label>
+        <input
+          type="number"
+          id="year"
+          [(ngModel)]="birthdate.year"
+          name="year"
+          placeholder="YYYY"
+        />
+      </div>
     </div>
   </form>
+</div>
+
+<div>
+  {{ birthdate.day }}
+</div>
+<div>
+  {{ birthdate.month }}
+</div>
+<div>
+  {{ birthdate.year }}
 </div>
