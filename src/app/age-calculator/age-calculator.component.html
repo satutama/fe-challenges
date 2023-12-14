@@ -2,7 +2,11 @@
   <form (ngSubmit)="calculateAge()" #ageCalculator="ngForm">
     <div class="form-group">
       <div class="data">
-        <label for="day">DAY</label>
+        <label
+          for="day"
+          [ngClass]="{ invalid: day.invalid && (day.dirty || day.touched) }"
+          >DAY</label
+        >
 
         <input
           type="text"
@@ -20,7 +24,13 @@
       </div>
 
       <div class="data">
-        <label for="month">MONTH</label>
+        <label
+          for="month"
+          [ngClass]="{
+            invalid: month.invalid && (month.dirty || month.touched)
+          }"
+          >MONTH</label
+        >
 
         <input
           type="text"
@@ -41,7 +51,11 @@
       </div>
 
       <div class="data">
-        <label for="year">DAY</label>
+        <label
+          for="year"
+          [ngClass]="{ invalid: year.invalid && (year.dirty || year.touched) }"
+          >YEAR</label
+        >
 
         <input
           type="text"
