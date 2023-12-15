@@ -17,6 +17,11 @@ interface Birthdate {
 })
 export class AgeCalculatorComponent {
   public requiredError = 'This field is required';
+  public invalidDay = 'Must be a valid day';
+  public invalidMonth = 'Must be a valid month';
+  public invalidYear = 'Must be in the past';
+  public currentYear = new Date().getFullYear();
+
   public birthdate: Birthdate = {
     day: null,
     month: null,

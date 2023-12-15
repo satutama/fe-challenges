@@ -5,21 +5,27 @@
         <label
           for="day"
           [ngClass]="{ invalid: day.invalid && (day.dirty || day.touched) }"
-          >DAY</label
         >
+          DAY
+        </label>
 
         <input
-          type="text"
+          type="number"
           id="day"
           required
           [(ngModel)]="birthdate.day"
           name="day"
+          min="1"
+          max="31"
           #day="ngModel"
           placeholder="DD"
         />
 
         <div *ngIf="day.invalid && (day.dirty || day.touched)" class="alert">
           <div *ngIf="day.errors?.['required']">{{ requiredError }}</div>
+          <div *ngIf="day.errors?.['min'] || day.errors?.['max']">
+            {{ invalidDay }}
+          </div>
         </div>
       </div>
 
@@ -29,15 +35,18 @@
           [ngClass]="{
             invalid: month.invalid && (month.dirty || month.touched)
           }"
-          >MONTH</label
         >
+          MONTH
+        </label>
 
         <input
-          type="text"
+          type="number"
           id="month"
           required
           [(ngModel)]="birthdate.month"
           name="month"
+          min="1"
+          max="12"
           #month="ngModel"
           placeholder="MM"
         />
@@ -47,6 +56,9 @@
           class="alert"
         >
           <div *ngIf="month.errors?.['required']">{{ requiredError }}</div>
+          <div *ngIf="month.errors?.['min'] || month.errors?.['max']">
+            {{ invalidMonth }}
+          </div>
         </div>
       </div>
 
@@ -54,21 +66,27 @@
         <label
           for="year"
           [ngClass]="{ invalid: year.invalid && (year.dirty || year.touched) }"
-          >YEAR</label
         >
+          YEAR
+        </label>
 
         <input
-          type="text"
+          type="number"
           id="year"
           required
           [(ngModel)]="birthdate.year"
           name="year"
+          min="1"
+          [max]="currentYear"
           #year="ngModel"
           placeholder="YYYY"
         />
 
         <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert">
           <div *ngIf="year.errors?.['required']">{{ requiredError }}</div>
+          <div *ngIf="year.errors?.['min'] || year.errors?.['max']">
+            {{ invalidYear }}
+          </div>
         </div>
       </div>
     </div>
