@@ -1,4 +1,4 @@
-$base-color-border: hsl(0, 0, 80%);
+$base-color-border: hsl(0, 0%, 80%);
 $purple: hsl(259, 100%, 65%);
 $light-red: hsl(0, 100%, 67%);
 
@@ -26,7 +26,7 @@ $light-red: hsl(0, 100%, 67%);
   flex-direction: column;
 
   label {
-    color: hsl(0, 0, 50%);
+    color: hsl(0, 0%, 50%);
     font-size: 10px;
     font-weight: bold;
     letter-spacing: 3px;
