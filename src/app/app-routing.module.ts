@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'result-summary' },
+  { path: '', pathMatch: 'full', redirectTo: 'age-calculator' },
   {
     path: 'qr-code',
     loadComponent: () =>
@@ -29,7 +29,7 @@ const routes: Routes = [
         (mod) => mod.AgeCalculatorComponent
       ),
   },
-  { path: '**', redirectTo: 'result-summary' },
+  { path: '**', redirectTo: 'age-calculator' },
 ];
 
 @NgModule({
