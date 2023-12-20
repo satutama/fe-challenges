@@ -1,6 +1,7 @@
 $base-color-border: hsl(0, 0%, 80%);
 $purple: hsl(259, 100%, 65%);
 $light-red: hsl(0, 100%, 67%);
+$off-black: hsl(0, 0%, 8%);
 
 :host {
   display: flex;
@@ -84,6 +85,10 @@ $light-red: hsl(0, 100%, 67%);
     padding: 30px;
     position: relative;
     z-index: 1;
+
+    &:active {
+      background-color: $off-black;
+    }
   }
 }
 
@@ -91,6 +96,7 @@ $light-red: hsl(0, 100%, 67%);
   font-family: "Poppins-Bold";
   font-size: 60px;
   font-style: italic;
+  color: $off-black;
 
   span {
     color: $purple;
