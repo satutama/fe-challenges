@@ -49,6 +49,12 @@ export class AgeCalculatorComponent {
   }
 
   public calculateAge() {
+    if (!this.birthdayForm.valid) {
+      this.birthdayForm.markAllAsTouched();
+
+      return;
+    }
+
     const daysPerYear = 365.25; // account for leap years
     const daysPerMonth = 30.44; // on average
     const millisecondsInADay = 1000 * 60 * 60 * 24;
