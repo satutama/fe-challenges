@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 interface Birthdate {
   day: number | null;
@@ -11,24 +17,36 @@ interface Birthdate {
 @Component({
   selector: 'app-age-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './age-calculator.component.html',
   styleUrls: ['./age-calculator.component.scss'],
 })
 export class AgeCalculatorComponent {
-  public requiredError = 'This field is required';
-  public invalidDay = 'Must be a valid day';
-  public invalidMonth = 'Must be a valid month';
-  public invalidYear = 'Must be in the past';
+  private basicValidators = [Validators.required, Validators.min(1)];
   public currentYear = new Date().getFullYear();
 
-  public birthdate: Birthdate = {
-    day: null,
-    month: null,
-    year: null,
-  };
-
   public age: Birthdate | undefined;
+
+  public birthdayForm = new FormGroup({
+    day: new FormControl('', [...this.basicValidators, Validators.max(31)]),
+    month: new FormControl('', [...this.basicValidators, Validators.max(12)]),
+    year: new FormControl('', [
+      ...this.basicValidators,
+      Validators.max(this.currentYear),
+    ]),
+  });
+
+  public get day() {
+    return this.birthdayForm.get('day')!;
+  }
+
+  public get month() {
+    return this.birthdayForm.get('month')!;
+  }
+
+  public get year() {
+    return this.birthdayForm.get('year')!;
+  }
 
   public calculateAge() {
     const daysPerYear = 365.25; // account for leap years
@@ -36,7 +54,7 @@ export class AgeCalculatorComponent {
     const millisecondsInADay = 1000 * 60 * 60 * 24;
 
     const parsedBirthDate = new Date(
-      `${this.birthdate.year}-${this.birthdate.month}-${this.birthdate.day}`
+      `${this.year.value}-${this.month.value}-${this.day.value}`
     );
 
     const timeDiff = Math.abs(Date.now() - parsedBirthDate.getTime());

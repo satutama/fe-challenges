@@ -50,8 +50,11 @@ $off-black: hsl(0, 0%, 8%);
       color: hsl(0, 0%, 60%);
     }
 
-    &.ng-invalid.ng-touched {
-      border-color: $light-red;
+    &.ng-invalid {
+      &.ng-touched,
+      &.ng-dirty {
+        border-color: $light-red;
+      }
     }
   }
 
