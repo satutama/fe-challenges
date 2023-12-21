@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { validDateValidator } from './valid-date.directive';
 
 interface Birthdate {
   day: number | null;
@@ -27,14 +29,17 @@ export class AgeCalculatorComponent {
 
   public age: Birthdate | undefined;
 
-  public birthdayForm = new FormGroup({
-    day: new FormControl('', [...this.basicValidators, Validators.max(31)]),
-    month: new FormControl('', [...this.basicValidators, Validators.max(12)]),
-    year: new FormControl('', [
-      ...this.basicValidators,
-      Validators.max(this.currentYear),
-    ]),
-  });
+  public birthdayForm = new FormGroup(
+    {
+      day: new FormControl('', [...this.basicValidators, Validators.max(31)]),
+      month: new FormControl('', [...this.basicValidators, Validators.max(12)]),
+      year: new FormControl('', [
+        ...this.basicValidators,
+        Validators.max(this.currentYear),
+      ]),
+    },
+    { validators: validDateValidator }
+  );
 
   public get day() {
     return this.birthdayForm.get('day')!;
@@ -46,6 +51,13 @@ export class AgeCalculatorComponent {
 
   public get year() {
     return this.birthdayForm.get('year')!;
+  }
+
+  public isInvalid(control: AbstractControl) {
+    return (
+      (control.invalid && (control.dirty || control.touched)) ||
+      this.birthdayForm.errors?.['invalidDate']
+    );
   }
 
   public calculateAge() {
