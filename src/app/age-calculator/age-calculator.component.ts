@@ -4,11 +4,10 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { validDateValidator } from './valid-date.directive';
+import { dateValidator } from './date-validator.directive';
 
 interface Birthdate {
   day: number | null;
@@ -19,15 +18,14 @@ interface Birthdate {
 @Component({
   selector: 'app-age-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './age-calculator.component.html',
   styleUrls: ['./age-calculator.component.scss'],
 })
 export class AgeCalculatorComponent {
   private basicValidators = [Validators.required, Validators.min(1)];
   public currentYear = new Date().getFullYear();
-
-  public age: Birthdate | undefined;
+  public age!: Birthdate;
 
   public birthdayForm = new FormGroup(
     {
@@ -38,20 +36,8 @@ export class AgeCalculatorComponent {
         Validators.max(this.currentYear),
       ]),
     },
-    { validators: validDateValidator }
+    { validators: dateValidator }
   );
-
-  public get day() {
-    return this.birthdayForm.get('day')!;
-  }
-
-  public get month() {
-    return this.birthdayForm.get('month')!;
-  }
-
-  public get year() {
-    return this.birthdayForm.get('year')!;
-  }
 
   public isInvalid(control: AbstractControl) {
     return (
@@ -89,5 +75,17 @@ export class AgeCalculatorComponent {
     );
 
     this.age = { year, month, day };
+  }
+
+  public get day() {
+    return this.birthdayForm.get('day')!;
+  }
+
+  public get month() {
+    return this.birthdayForm.get('month')!;
+  }
+
+  public get year() {
+    return this.birthdayForm.get('year')!;
   }
 }

@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import * as moment from 'moment';
 
-export const validDateValidator: ValidatorFn = (
+export const dateValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
   const day = control.get('day')?.value;
