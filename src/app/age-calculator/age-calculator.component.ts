@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import * as moment from 'moment';
 import { dateValidator } from './date-validator.directive';
 
 interface Birthdate {
@@ -57,11 +58,12 @@ export class AgeCalculatorComponent {
     const daysPerMonth = 30.44; // on average
     const millisecondsInADay = 1000 * 60 * 60 * 24;
 
-    const parsedBirthDate = new Date(
-      `${this.year.value}-${this.month.value}-${this.day.value}`
+    const parsedBirthDate = moment(
+      `${this.year.value}/${this.month.value}/${this.day.value}`,
+      'Y/M/D'
     );
 
-    const timeDiff = Math.abs(Date.now() - parsedBirthDate.getTime());
+    const timeDiff = moment(new Date()).diff(parsedBirthDate);
 
     const year = Math.floor(timeDiff / (millisecondsInADay * daysPerYear));
 
