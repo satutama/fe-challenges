@@ -65,6 +65,7 @@ $off-black: hsl(0, 0%, 8%);
     font-size: 12px;
     font-style: italic;
     color: $light-red;
+    max-width: 77px;
   }
 }
 
@@ -133,8 +134,13 @@ $off-black: hsl(0, 0%, 8%);
     }
   }
 
-  .data input {
-    width: 100px;
-    padding: 0 16px;
+  .data {
+    input {
+      width: 100px;
+      padding: 0 16px;
+    }
+    .alert {
+      max-width: none;
+    }
   }
 }
