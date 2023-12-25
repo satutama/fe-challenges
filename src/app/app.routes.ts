@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'result-summary' },
+export const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'age-calculator' },
   {
     path: 'qr-code',
     loadComponent: () =>
@@ -22,11 +21,12 @@ const routes: Routes = [
         (mod) => mod.ResultSummaryComponent
       ),
   },
-  { path: '**', redirectTo: 'result-summary' },
+  {
+    path: 'age-calculator',
+    loadComponent: () =>
+      import('./age-calculator/age-calculator.component').then(
+        (mod) => mod.AgeCalculatorComponent
+      ),
+  },
+  { path: '**', redirectTo: 'age-calculator' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

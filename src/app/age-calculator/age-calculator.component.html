@@ -1,0 +1,69 @@
+<div class="container">
+  <form [formGroup]="birthdayForm" (ngSubmit)="calculateAge()">
+    <div class="form-group">
+      <div class="data">
+        <label for="day" [ngClass]="{'invalid': isInvalid(day)}">DAY</label>
+        <input id="day" type="number" formControlName="day" placeholder="DD" [ngClass]="{'invalid': isInvalid(day)}" />
+
+        <div *ngIf="isInvalid(day)" class="alert">
+          <div *ngIf="day.errors?.['required']">
+            This field is required
+          </div>
+
+          <div *ngIf="day.errors?.['min'] || day.errors?.['max']">
+            Must be a valid day
+          </div>
+
+          <div *ngIf="birthdayForm.errors && !(day.errors?.['min'] || day.errors?.['max'])">
+            Must be a valid date
+          </div>
+        </div>
+      </div>
+
+      <div class="data">
+        <label for="month" [ngClass]="{'invalid': isInvalid(month)}">MONTH</label>
+        <input id="month" type="number" formControlName="month" placeholder="MM" [ngClass]="{'invalid': isInvalid(month)}" />
+
+        <div *ngIf="isInvalid(month)" class="alert">
+          <div *ngIf="month.errors?.['required']">This field is required</div>
+          <div *ngIf="month.errors?.['min'] || month.errors?.['max']">
+            Must be a valid month
+          </div>
+        </div>
+      </div>
+
+      <div class="data">
+        <label for="year" [ngClass]="{'invalid': isInvalid(year)}">YEAR</label>
+        <input id="year" type="number" formControlName="year" placeholder="YYYY" [ngClass]="{'invalid': isInvalid(year)}" />
+
+        <div *ngIf="isInvalid(year)" class="alert">
+          <div *ngIf="year.errors?.['required']">This field is required</div>
+          <div *ngIf="year.errors?.['min'] || year.errors?.['max']">
+            Must be in the past
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <hr />
+      <button type="submit" class="button"></button>
+    </div>
+  </form>
+
+  <div class="result">
+    <div>
+      <span *ngIf="age; else emptyBlock">{{ age.year }}</span> years
+    </div>
+
+    <div>
+      <span *ngIf="age; else emptyBlock">{{ age.month }}</span> months
+    </div>
+
+    <div>
+      <span *ngIf="age; else emptyBlock">{{ age.day }}</span> days
+    </div>
+
+    <ng-template #emptyBlock><span>--</span></ng-template>
+  </div>
+</div>
