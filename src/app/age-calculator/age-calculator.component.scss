@@ -54,6 +54,10 @@ $off-black: hsl(0, 0%, 8%);
       color: hsl(0, 0%, 60%);
     }
 
+    &:focus {
+      border-color: $purple;
+    }
+
     &.ng-invalid,
     &.invalid {
       &.ng-touched,
@@ -92,9 +96,10 @@ $off-black: hsl(0, 0%, 8%);
     border: none;
     padding: 30px;
     position: relative;
+    cursor: pointer;
     z-index: 1;
 
-    &:active {
+    &:hover {
       background-color: $off-black;
     }
   }
