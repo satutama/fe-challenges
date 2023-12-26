@@ -5,26 +5,28 @@ export const routes: Routes = [
   {
     path: 'qr-code',
     loadComponent: () =>
-      import('./qr-code/qr-code.component').then((mod) => mod.QrCodeComponent),
+      import('./challenges/qr-code/qr-code.component').then(
+        (mod) => mod.QrCodeComponent
+      ),
   },
   {
     path: 'accordion',
     loadComponent: () =>
-      import('./accordion/accordion.component').then(
+      import('./challenges/accordion/accordion.component').then(
         (mod) => mod.AccordionComponent
       ),
   },
   {
     path: 'result-summary',
     loadComponent: () =>
-      import('./result-summary/result-summary.component').then(
+      import('./challenges/result-summary/result-summary.component').then(
         (mod) => mod.ResultSummaryComponent
       ),
   },
   {
     path: 'age-calculator',
     loadComponent: () =>
-      import('./age-calculator/age-calculator.component').then(
+      import('./challenges/age-calculator/age-calculator.component').then(
         (mod) => mod.AgeCalculatorComponent
       ),
   },
