@@ -4,6 +4,7 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'age-calculator' },
   {
     path: 'qr-code',
+    title: 'QR code',
     loadComponent: () =>
       import('./challenges/qr-code/qr-code.component').then(
         (mod) => mod.QrCodeComponent
@@ -11,6 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'accordion',
+    title: 'Accordion',
     loadComponent: () =>
       import('./challenges/accordion/accordion.component').then(
         (mod) => mod.AccordionComponent
@@ -18,6 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'result-summary',
+    title: 'Result Summary',
     loadComponent: () =>
       import('./challenges/result-summary/result-summary.component').then(
         (mod) => mod.ResultSummaryComponent
@@ -25,10 +28,19 @@ export const routes: Routes = [
   },
   {
     path: 'age-calculator',
+    title: 'Age Calculator',
     loadComponent: () =>
       import('./challenges/age-calculator/age-calculator.component').then(
         (mod) => mod.AgeCalculatorComponent
       ),
+  },
+  {
+    path: 'ip-address-tracker',
+    title: 'IP Address Tracker',
+    loadComponent: () =>
+      import(
+        './challenges/ip-address-tracker/ip-address-tracker.component'
+      ).then((mod) => mod.IpAddressTrackerComponent),
   },
   { path: '**', redirectTo: 'age-calculator' },
 ];
