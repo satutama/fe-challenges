@@ -4,18 +4,61 @@
   font-family: "Rubik";
 }
 
-.input-section {
+.head-section {
   background-image: url("/assets/images/ip-tracker/pattern-bg-desktop.png");
   background-repeat: no-repeat;
   height: 280px;
+  width: 100%;
 
-  h1 {
+  h1,
+  .input-container {
     position: relative;
-    top: 24px;
     margin: auto;
     text-align: center;
     color: white;
+  }
+
+  h1 {
+    top: 24px;
     font-weight: 400;
+  }
+
+  .input-container {
+    top: 48px;
+    height: 40px;
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      height: 50px;
+      width: 442px;
+      border: none;
+      border-bottom-left-radius: 12px;
+      border-top-left-radius: 12px;
+    }
+
+    .button {
+      background: hsl(0, 0%, 17%);
+      border: none;
+      cursor: pointer;
+      padding: 20px;
+      width: 52px;
+      height: 52px;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+
+      .icon {
+        display: block;
+        height: 10px;
+        background-image: url("/assets/icons/icon-arrow-right.svg");
+        background-repeat: no-repeat;
+        background-size: 10px 10px;
+      }
+    }
   }
 }
 
