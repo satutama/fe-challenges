@@ -51,8 +51,8 @@ Then I add structural directive (\*ngIf) in the icon to decide which Icon should
 
 ```html
 <button mat-icon-button>
-  <svg-icon *ngIf="!faq.displayed" src="assets/images/icon-plus.svg" alt="icon-closed"></svg-icon>
-  <svg-icon *ngIf="faq.displayed" src="assets/images/icon-minus.svg" alt="icon-opened"></svg-icon>
+  <svg-icon *ngIf="!faq.displayed" src="assets/icons/icon-plus.svg" alt="icon-closed"></svg-icon>
+  <svg-icon *ngIf="faq.displayed" src="assets/icons/icon-minus.svg" alt="icon-opened"></svg-icon>
 </button>
 ```
 
