@@ -1,3 +1,24 @@
+:host {
+  display: block;
+  max-width: 1440px;
+  font-family: "Rubik";
+}
+
+.input-section {
+  background-image: url("/assets/images/ip-tracker/pattern-bg-desktop.png");
+  background-repeat: no-repeat;
+  height: 280px;
+
+  h1 {
+    position: relative;
+    top: 24px;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+  }
+}
+
 .map {
   height: 1000px;
   padding: 0;
