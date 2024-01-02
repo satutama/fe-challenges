@@ -10,7 +10,31 @@
     </form>
   </div>
 
-  <div class="ip-details"></div>
+  <div *ngIf="ipAddress$ | async as ipAddress" class="ip-details">
+    <div class="item">
+      <label>IP Address</label>
+      <p>{{ipAddress.ip}}</p>
+    </div>
+
+    <div class="item">
+      <label>Location</label>
+      <p>
+        {{ipAddress.location.city}},
+        {{ipAddress.location.country}}
+        {{ipAddress.location.postalCode}}
+      </p>
+    </div>
+
+    <div class="item">
+      <label>Timezone</label>
+      <p>{{ipAddress.location.timezone}}</p>
+    </div>
+
+    <div class="item">
+      <label>ISP</label>
+      <p>{{ipAddress.isp}}</p>
+    </div>
+  </div>
 </div>
 
 <div class="map" leaflet [leafletOptions]="options">

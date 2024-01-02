@@ -63,12 +63,41 @@
   }
 
   .ip-details {
-    top: 110px;
-    height: 180px;
+    display: flex;
+    align-items: center;
+
+    top: 125px;
+    min-height: 120px;
     width: 900px;
+    padding: 24px 0px;
     background: white;
+    color: black;
     border-radius: 15px;
     z-index: 2;
+
+    .item {
+      flex: 1 1 0px;
+      height: 90px;
+      text-align: left;
+      padding-left: 24px;
+    }
+
+    .item + .item {
+      border-left: solid 1px hsl(0, 0%, 59%, 0.4);
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      color: hsl(0, 0%, 59%);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 }
 
