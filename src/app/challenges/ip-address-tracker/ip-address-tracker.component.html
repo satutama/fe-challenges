@@ -37,5 +37,5 @@
   </div>
 </div>
 
-<div class="map" leaflet [leafletOptions]="options">
+<div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
 </div>
