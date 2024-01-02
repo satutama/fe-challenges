@@ -1,9 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { MOCK_API } from './mock';
 
 export interface IPResponse {
+  as: {
+    asn: number;
+    name: string;
+    route: string;
+    domain: string;
+    type: string;
+  };
   ip: string;
+  isp: string;
   location: {
     country: string;
     region: string;
@@ -12,30 +21,23 @@ export interface IPResponse {
     lng: number;
     postalCode: string;
     timezone: string;
-    geonameId: 5375481;
+    geonameId: number;
   };
-  domains: string[];
-  as: {
-    asn: 15169;
-    name: string;
-    route: string;
-    domain: string;
-    type: string;
-  };
-  isp: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class IPAddressTrackerService {
-  private url = 'https://geo.ipify.org/api/v2/country,city';
+  // private apiKey = 'at_W59ackEMWkfq16RP8nPkOYFD2cTj6';
+  // private url = `https://geo.ipify.org/api/v2/country,city?apiKey=${this.apiKey}`;
 
   constructor(private http: HttpClient) {}
 
-  public getIPDetails(): Observable<IPResponse[]> {
-    return this.http
-      .get<IPResponse[]>(`${this.url}/posts`)
-      .pipe(catchError((error) => throwError(() => error)));
+  public getIPDetails(): Observable<IPResponse> {
+    return of(MOCK_API);
+    // return this.http
+    //   .get<IPResponse>(`${this.url}`)
+    //   .pipe(catchError((error) => throwError(() => error)));
   }
 }
