@@ -9,7 +9,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" closed>
+  <mat-sidenav #sidenav mode="over" closed>
     <mat-nav-list *ngFor="let route of routes">
       <a mat-list-item [routerLink]="route.path" routerLinkActive="active">
         {{route.title}}

@@ -37,5 +37,5 @@ export class AppComponent {
     this.opened = !this.opened;
   }
 
-  public routes = routes;
+  public routes = [...routes].filter((route) => !!route.title);
 }
