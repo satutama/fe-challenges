@@ -4,6 +4,7 @@ $very-dark-grey: hsl(0, 0%, 17%);
 :host {
   display: block;
   max-width: 1440px;
+  margin: 0px auto;
   font-family: "Rubik";
 }
 
@@ -17,8 +18,8 @@ $very-dark-grey: hsl(0, 0%, 17%);
   .input-container,
   .ip-details {
     position: relative;
-    margin: auto;
     text-align: center;
+    margin: 0 16px;
     color: white;
   }
 
@@ -70,11 +71,11 @@ $very-dark-grey: hsl(0, 0%, 17%);
 
   .ip-details {
     display: flex;
+    flex-direction: column;
     align-items: center;
-
-    top: 125px;
+    top: 85px;
     min-height: 120px;
-    width: 900px;
+    max-width: 900px;
     padding: 24px 0px;
     background: white;
     color: black;
@@ -84,12 +85,7 @@ $very-dark-grey: hsl(0, 0%, 17%);
     .item {
       flex: 1 1 0px;
       height: 90px;
-      text-align: left;
       padding-left: 24px;
-    }
-
-    .item + .item {
-      border-left: solid 1px hsl(0, 0%, 59%, 0.4);
     }
 
     label {
@@ -111,4 +107,42 @@ $very-dark-grey: hsl(0, 0%, 17%);
   height: 600px;
   padding: 0;
   z-index: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    hr {
+      top: 0px;
+    }
+  }
+
+  .data {
+    input {
+      padding: 0 16px;
+    }
+  }
+
+  .head-section {
+    .input-container,
+    .ip-details {
+      margin: auto;
+    }
+
+    .ip-details {
+      flex-direction: row;
+      top: 125px;
+
+      .item {
+        text-align: left;
+      }
+
+      .item + .item {
+        border-left: solid 1px hsl(0, 0%, 59%, 0.4);
+      }
+    }
+  }
 }
