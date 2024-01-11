@@ -2,8 +2,8 @@
   <h1>IP Address Tracker</h1>
 
   <div class="input-container">
-    <form action="">
-      <input type="text" placeholder="Search for any IP address or domain">
+    <form (submit)="submitForm()">
+      <input type="text" placeholder="Search for any IP address or domain" [formControl]="domain">
       <button type="submit" class="button">
         <span class="icon"></span>
       </button>

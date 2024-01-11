@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as Leaflet from 'leaflet';
-import { Observable, ReplaySubject, merge, take } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 import {
   IPAddressTrackerService,
   IPResponse,
@@ -11,15 +12,14 @@ import {
 @Component({
   selector: 'app-ip-address-tracker',
   standalone: true,
-  imports: [CommonModule, LeafletModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, LeafletModule],
   templateUrl: './ip-address-tracker.component.html',
   styleUrls: ['./ip-address-tracker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IpAddressTrackerComponent {
-  public readonly ipAddress$: Observable<IPResponse>;
-
-  private readonly ipAddressSubject = new ReplaySubject<IPResponse>(1);
+  public ipAddress$!: Observable<IPResponse>;
+  public domain = new FormControl('');
 
   public map!: Leaflet.Map;
   public markers: Leaflet.Marker[] = [];
@@ -35,8 +35,8 @@ export class IpAddressTrackerComponent {
 
   constructor(private ipAddressTrackerService: IPAddressTrackerService) {
     this.ipAddress$ = merge(
-      this.ipAddressSubject,
-      this.ipAddressTrackerService.getIPDetails()
+      this.ipAddressTrackerService.IPDetails$,
+      this.ipAddressTrackerService.getLocalIp()
     );
   }
 
@@ -45,8 +45,14 @@ export class IpAddressTrackerComponent {
     this.initMarkers();
   }
 
+  public submitForm(): void {
+    const domain = this.domain.value ?? undefined;
+
+    this.ipAddressTrackerService.getIPDetails(domain);
+  }
+
   private initMarkers() {
-    this.ipAddress$.pipe(take(1)).subscribe((ipAddress) => {
+    this.ipAddress$.subscribe((ipAddress) => {
       const data = {
         position: { lat: ipAddress.location.lat, lng: ipAddress.location.lng },
       };
