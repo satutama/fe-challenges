@@ -31,12 +31,11 @@ export interface IPResponse {
 export class IPAddressTrackerService {
   public IPDetails$: Observable<IPResponse>;
   private IPDetailsSubject = new Subject<IPResponse>();
-  // private apiKey = 'at_W59ackEMWkfq16RP8nPkOYFD2cTj6';
-  // private url = `https://geo.ipify.org/api/v2/country,city?apiKey=${this.apiKey}`;
+  private apiKey = 'at_W59ackEMWkfq16RP8nPkOYFD2cTj6';
+  private url = `https://geo.ipify.org/api/v2/country,city?apiKey=${this.apiKey}`;
 
   constructor(private http: HttpClient) {
     this.IPDetails$ = this.IPDetailsSubject.asObservable();
-    this.getIPDetails();
   }
 
   public getLocalIp() {
@@ -47,7 +46,11 @@ export class IPAddressTrackerService {
     return of(MOCK_API);
   }
 
-  public getIPDetails(domain?: string) {
+  public getIPDetails(domain: string) {
+    return this.http;
+    // .get<IPResponse>(`${this.url}&domain=${domain}`)
+    // .pipe(catchError((error) => throwError(() => error)))
+    // .subscribe((response) => this.IPDetailsSubject.next(response));
     this.IPDetailsSubject.next(OTHER_MOCK_API);
   }
 }

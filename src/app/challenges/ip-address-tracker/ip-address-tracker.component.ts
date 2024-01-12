@@ -46,9 +46,11 @@ export class IpAddressTrackerComponent {
   }
 
   public submitForm(): void {
-    const domain = this.domain.value ?? undefined;
+    console.log(this.domain.value);
 
-    this.ipAddressTrackerService.getIPDetails(domain);
+    if (this.domain.value) {
+      this.ipAddressTrackerService.getIPDetails(this.domain.value);
+    }
   }
 
   private initMarkers() {
