@@ -1,9 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as Leaflet from 'leaflet';
 import { Observable, merge } from 'rxjs';
+import { domainOrIPValidator } from './domain-or-IP-validator.directive';
 import {
   IPAddressTrackerService,
   IPResponse,
@@ -19,7 +25,10 @@ import {
 })
 export class IpAddressTrackerComponent {
   public ipAddress$!: Observable<IPResponse>;
-  public domain = new FormControl('');
+  public domain = new FormControl('', [
+    Validators.required,
+    domainOrIPValidator(),
+  ]);
 
   public map!: Leaflet.Map;
   public markers: Leaflet.Marker[] = [];
@@ -46,9 +55,7 @@ export class IpAddressTrackerComponent {
   }
 
   public submitForm(): void {
-    console.log(this.domain.value);
-
-    if (this.domain.value) {
+    if (this.domain.value && this.domain.valid) {
       this.ipAddressTrackerService.getIPDetails(this.domain.value);
     }
   }

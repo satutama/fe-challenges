@@ -49,6 +49,10 @@ $very-dark-grey: hsl(0, 0%, 17%);
       font-weight: 500;
     }
 
+    .ng-invalid:not(form).ng-touched {
+      border-left: 4px solid #a94442;
+    }
+
     .button {
       background: $very-dark-grey;
       border: none;
