@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'age-calculator' },
+  { path: '', pathMatch: 'full', redirectTo: 'ip-address-tracker' },
   {
     path: 'qr-code',
     title: 'QR code',
