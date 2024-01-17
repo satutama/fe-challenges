@@ -67,8 +67,15 @@ export class IpAddressTrackerComponent {
       const data = {
         position: { lat: ipAddress.location.lat, lng: ipAddress.location.lng },
       };
-      const marker = Leaflet.marker(data.position);
 
+      const icon = {
+        icon: Leaflet.icon({
+          iconSize: [35, 45],
+          iconUrl: './assets/icons/icon-location.svg',
+        }),
+      };
+
+      const marker = Leaflet.marker(data.position, icon);
       marker
         .addTo(this.map)
         .bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
@@ -78,9 +85,12 @@ export class IpAddressTrackerComponent {
   }
 
   private clearAllMarkers() {
-    for (var id in this.markers) {
-      this.map.removeLayer(this.markers[id]);
+    if (this.markers.length) {
+      for (var id in this.markers) {
+        this.map.removeLayer(this.markers[id]);
+      }
+
+      this.markers = [];
     }
-    this.markers = [];
   }
 }
