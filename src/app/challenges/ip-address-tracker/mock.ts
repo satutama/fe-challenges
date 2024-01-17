@@ -28,7 +28,7 @@ export const OTHER_MOCK_API: IPResponse = {
     country: 'FR',
     region: 'Provincie Noord-Holland',
     city: 'Amsterdam',
-    lat: 51.86902,
+    lat: 51.56902,
     lng: 4.41994,
     postalCode: '3165',
     timezone: '+01:00',
