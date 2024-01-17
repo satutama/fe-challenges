@@ -62,6 +62,8 @@ export class IpAddressTrackerComponent {
 
   private initMarkers() {
     this.ipAddress$.subscribe((ipAddress) => {
+      this.clearAllMarkers();
+
       const data = {
         position: { lat: ipAddress.location.lat, lng: ipAddress.location.lng },
       };
@@ -73,5 +75,12 @@ export class IpAddressTrackerComponent {
       this.map.panTo(data.position);
       this.markers.push(marker);
     });
+  }
+
+  private clearAllMarkers() {
+    for (var id in this.markers) {
+      this.map.removeLayer(this.markers[id]);
+    }
+    this.markers = [];
   }
 }
