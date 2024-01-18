@@ -47,6 +47,7 @@ $very-dark-grey: hsl(0, 0%, 17%);
       padding: 0 12px;
       font-size: 16px;
       font-weight: 500;
+      cursor: pointer;
     }
 
     .ng-invalid:not(form).ng-touched {
@@ -62,6 +63,10 @@ $very-dark-grey: hsl(0, 0%, 17%);
       height: 52px;
       border-top-right-radius: 12px;
       border-bottom-right-radius: 12px;
+
+      &:hover {
+        background: $dark-grey;
+      }
 
       .icon {
         display: block;
@@ -140,6 +145,7 @@ $very-dark-grey: hsl(0, 0%, 17%);
     .ip-details {
       flex-direction: row;
       top: 125px;
+      padding: 18px 0px;
 
       .item {
         text-align: left;
