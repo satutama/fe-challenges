@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, of } from 'rxjs';
-import { MOCK_API, OTHER_MOCK_API } from '../mock';
+import { Observable, Subject, catchError, throwError } from 'rxjs';
 
 export interface IPResponse {
   as: {
@@ -39,17 +38,15 @@ export class IPAddressTrackerService {
   }
 
   public getLocalIp() {
-    // return this.http
-    //   .get<IPResponse>(`${this.url}`)
-    //   .pipe(catchError((error) => throwError(() => error)));
-    return of(MOCK_API);
+    return this.http
+      .get<IPResponse>(`${this.url}`)
+      .pipe(catchError((error) => throwError(() => error)));
   }
 
   public getIPDetails(domain: string) {
-    // return this.http
-    //   .get<IPResponse>(`${this.url}&domain=${domain}`)
-    //   .pipe(catchError((error) => throwError(() => error)))
-    //   .subscribe((response) => this.IPDetailsSubject.next(response));
-    this.IPDetailsSubject.next(OTHER_MOCK_API);
+    return this.http
+      .get<IPResponse>(`${this.url}&domain=${domain}`)
+      .pipe(catchError((error) => throwError(() => error)))
+      .subscribe((response) => this.IPDetailsSubject.next(response));
   }
 }
