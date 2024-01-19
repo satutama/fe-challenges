@@ -13,7 +13,8 @@ import { domainOrIPValidator } from './domain-or-IP-validator.directive';
 import {
   IPAddressTrackerService,
   IPResponse,
-} from './ip-address-tracker.service';
+} from './services/ip-address-tracker.service';
+import { MapService } from './services/map.service';
 
 @Component({
   selector: 'app-ip-address-tracker',
@@ -30,8 +31,8 @@ export class IpAddressTrackerComponent {
     domainOrIPValidator(),
   ]);
 
-  public map!: Leaflet.Map;
-  public markers: Leaflet.Marker[] = [];
+  public map: Leaflet.Map = this.mapService.map;
+  public markers: Leaflet.Marker[] = this.mapService.markers;
   public options = {
     layers: [
       Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -42,7 +43,10 @@ export class IpAddressTrackerComponent {
     zoom: 14,
   };
 
-  constructor(private ipAddressTrackerService: IPAddressTrackerService) {
+  constructor(
+    private ipAddressTrackerService: IPAddressTrackerService,
+    private mapService: MapService
+  ) {
     this.ipAddress$ = merge(
       this.ipAddressTrackerService.IPDetails$,
       this.ipAddressTrackerService.getLocalIp()
@@ -50,47 +54,13 @@ export class IpAddressTrackerComponent {
   }
 
   public onMapReady($event: Leaflet.Map) {
-    this.map = $event;
-    this.initMarkers();
+    this.mapService.map = $event;
+    this.mapService.initMarkers(this.ipAddress$);
   }
 
   public submitForm(): void {
     if (this.domain.value && this.domain.valid) {
       this.ipAddressTrackerService.getIPDetails(this.domain.value);
-    }
-  }
-
-  private initMarkers() {
-    this.ipAddress$.subscribe((ipAddress) => {
-      this.clearAllMarkers();
-
-      const data = {
-        position: { lat: ipAddress.location.lat, lng: ipAddress.location.lng },
-      };
-
-      const icon = {
-        icon: Leaflet.icon({
-          iconSize: [35, 45],
-          iconUrl: './assets/icons/icon-location.svg',
-        }),
-      };
-
-      const marker = Leaflet.marker(data.position, icon);
-      marker
-        .addTo(this.map)
-        .bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
-      this.map.panTo(data.position);
-      this.markers.push(marker);
-    });
-  }
-
-  private clearAllMarkers() {
-    if (this.markers.length) {
-      for (var id in this.markers) {
-        this.map.removeLayer(this.markers[id]);
-      }
-
-      this.markers = [];
     }
   }
 }
