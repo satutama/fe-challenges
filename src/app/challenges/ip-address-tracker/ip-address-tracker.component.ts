@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as Leaflet from 'leaflet';
-import { Observable, merge } from 'rxjs';
+import { Observable, merge, share } from 'rxjs';
 import { domainOrIPValidator } from './domain-or-IP-validator.directive';
 import {
   IPAddressTrackerService,
@@ -50,7 +50,7 @@ export class IpAddressTrackerComponent {
     this.ipAddress$ = merge(
       this.ipAddressTrackerService.IPDetails$,
       this.ipAddressTrackerService.getLocalIp()
-    );
+    ).pipe(share());
   }
 
   public onMapReady($event: Leaflet.Map) {
