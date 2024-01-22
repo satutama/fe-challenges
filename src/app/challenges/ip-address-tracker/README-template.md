@@ -69,4 +69,5 @@ In the component, we define the ipAddress$ with the observable from the Ip addre
 ### What can be improved
 
 - loading state
+- error state
 - extract the URL from the service
