@@ -1,7 +1,7 @@
 <div class="shell">
   <div class="container">
     <div class="header">
-      <img src="assets/images/icon-star.svg" />
+      <img src="assets/icons/icon-star.svg" />
 
       <h2>FAQs</h2>
     </div>
@@ -13,14 +13,11 @@
 
           <div class="icon">
             <button mat-icon-button>
-              <svg-icon
-                [src]="
+              <svg-icon [src]="
                   faq.displayed
-                    ? 'assets/images/icon-minus.svg'
-                    : 'assets/images/icon-plus.svg'
-                "
-                [attr.alt]="faq.displayed ? 'icon-opened' : 'icon-closed'"
-              ></svg-icon>
+                    ? 'assets/icons/icon-minus.svg'
+                    : 'assets/icons/icon-plus.svg'
+                " [attr.alt]="faq.displayed ? 'icon-opened' : 'icon-closed'"></svg-icon>
             </button>
           </div>
         </div>

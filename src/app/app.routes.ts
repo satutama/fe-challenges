@@ -1,32 +1,46 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'age-calculator' },
+  { path: '', pathMatch: 'full', redirectTo: 'ip-address-tracker' },
   {
     path: 'qr-code',
+    title: 'QR code',
     loadComponent: () =>
-      import('./qr-code/qr-code.component').then((mod) => mod.QrCodeComponent),
+      import('./challenges/qr-code/qr-code.component').then(
+        (mod) => mod.QrCodeComponent
+      ),
   },
   {
     path: 'accordion',
+    title: 'Accordion',
     loadComponent: () =>
-      import('./accordion/accordion.component').then(
+      import('./challenges/accordion/accordion.component').then(
         (mod) => mod.AccordionComponent
       ),
   },
   {
     path: 'result-summary',
+    title: 'Result Summary',
     loadComponent: () =>
-      import('./result-summary/result-summary.component').then(
+      import('./challenges/result-summary/result-summary.component').then(
         (mod) => mod.ResultSummaryComponent
       ),
   },
   {
     path: 'age-calculator',
+    title: 'Age Calculator',
     loadComponent: () =>
-      import('./age-calculator/age-calculator.component').then(
+      import('./challenges/age-calculator/age-calculator.component').then(
         (mod) => mod.AgeCalculatorComponent
       ),
+  },
+  {
+    path: 'ip-address-tracker',
+    title: 'IP Address Tracker',
+    loadComponent: () =>
+      import(
+        './challenges/ip-address-tracker/ip-address-tracker.component'
+      ).then((mod) => mod.IpAddressTrackerComponent),
   },
   { path: '**', redirectTo: 'age-calculator' },
 ];

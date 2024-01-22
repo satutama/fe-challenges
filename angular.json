@@ -33,6 +33,10 @@
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "leaflet"
+           ],
             "scripts": []
           },
           "configurations": {

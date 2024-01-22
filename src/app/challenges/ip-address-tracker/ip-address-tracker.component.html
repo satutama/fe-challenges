@@ -1,0 +1,41 @@
+<div class="head-section">
+  <h1>IP Address Tracker</h1>
+
+  <div class="input-container">
+    <form (submit)="submitForm()">
+      <input type="text" placeholder="Search for any IP address or domain" [formControl]="domain">
+      <button type="submit" class="button">
+        <span class="icon"></span>
+      </button>
+    </form>
+  </div>
+
+  <div *ngIf="ipAddress$ | async as ipAddress" class="ip-details">
+    <div class="item">
+      <label>IP Address</label>
+      <p>{{ipAddress.ip}}</p>
+    </div>
+
+    <div class="item">
+      <label>Location</label>
+      <p>
+        {{ipAddress.location.city}},
+        {{ipAddress.location.country}}
+        {{ipAddress.location.postalCode}}
+      </p>
+    </div>
+
+    <div class="item">
+      <label>Timezone</label>
+      <p>UTC {{ipAddress.location.timezone}}</p>
+    </div>
+
+    <div class="item">
+      <label>ISP</label>
+      <p>{{ipAddress.isp}}</p>
+    </div>
+  </div>
+</div>
+
+<div class="map" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+</div>

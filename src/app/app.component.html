@@ -1,10 +1,6 @@
 <mat-toolbar>
   <header>
-    <button
-      mat-icon-button
-      [ngClass]="{ opened: opened }"
-      (click)="sidenavToggle()"
-    >
+    <button mat-icon-button [ngClass]="{ opened: sidenav.opened }" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
 
@@ -13,25 +9,10 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" closed>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/qr-code" routerLinkActive="active">
-        QR code
-      </a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/accordion" routerLinkActive="active">
-        Accordion
-      </a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/result-summary" routerLinkActive="active">
-        Result Summary
-      </a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/age-calculator" routerLinkActive="active">
-        Age Calculator
+  <mat-sidenav #sidenav mode="over" closed>
+    <mat-nav-list *ngFor="let route of routes">
+      <a mat-list-item [routerLink]="route.path" routerLinkActive="active">
+        {{route.title}}
       </a>
     </mat-nav-list>
   </mat-sidenav>
