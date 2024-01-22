@@ -37,15 +37,11 @@ export class IPAddressTrackerService {
     this.IPDetails$ = this.IPDetailsSubject.asObservable();
   }
 
-  public getLocalIp() {
-    return this.http
-      .get<IPResponse>(`${this.url}`)
-      .pipe(catchError((error) => throwError(() => error)));
-  }
+  public getIPDetails(domain?: string) {
+    const url = domain ? `${this.url}&domain=${domain}` : this.url;
 
-  public getIPDetails(domain: string) {
     return this.http
-      .get<IPResponse>(`${this.url}&domain=${domain}`)
+      .get<IPResponse>(`${url}`)
       .pipe(catchError((error) => throwError(() => error)))
       .subscribe((response) => this.IPDetailsSubject.next(response));
   }
