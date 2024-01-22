@@ -5,7 +5,7 @@ import {
   Subject,
   catchError,
   merge,
-  share,
+  shareReplay,
   switchMap,
   throwError,
 } from 'rxjs';
@@ -48,7 +48,7 @@ export class IPAddressTrackerService {
       .pipe(switchMap((domain) => this.getIPDetails(domain)));
 
     this.IPDetails$ = merge(initialIpDetails$, searchedIpDetails$).pipe(
-      share()
+      shareReplay(1)
     );
   }
 
