@@ -67,6 +67,30 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
 html,
 body {
   height: 100%;
