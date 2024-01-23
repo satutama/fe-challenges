@@ -4,11 +4,14 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'moon': "url('/assets/icons/icon-moon.svg')"
+      },
     fontFamily: {
       'nunitoSans': ['"NunitoSans"', 'Arial', 'sans-serif']
     }
   },
   plugins: [],
+  }
 }
-
