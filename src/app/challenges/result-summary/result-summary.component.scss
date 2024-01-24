@@ -3,25 +3,6 @@
   justify-content: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  border-radius: 20px;
-  font-family: Hanken;
-  margin-top: 100px;
-
-  h3 {
-    margin-top: 35px;
-  }
-}
-
-.result,
-.summary {
-  width: 300px;
-}
-
 .result {
   h3 {
     color: HSL(0, 0%, 80%);
@@ -48,7 +29,7 @@
 
     height: 180px;
     width: 180px;
-    margin-top: 12px;
+    margin-top: 30px;
     border-radius: 50%;
   }
 
@@ -73,21 +54,16 @@
   }
 
   .conclusion {
-    padding: 0 40px;
-    text-align: center;
     color: HSL(0, 0%, 80%);
   }
 }
 
 .summary {
   padding: 0 25px;
-  width: 250px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 
   .item {
-    display: flex;
-    justify-content: space-between;
     padding: 0 12px;
     border-radius: 10px;
     font-weight: 600;

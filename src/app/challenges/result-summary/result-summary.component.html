@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="result">
-    <h3>Your Result</h3>
+<div class="font-hanken relative top-24 flex flex-wrap shadow-lg shadow-slate-300 rounded-2xl">
+  <div class="result w-80">
+    <h3 class="text-lg font-bold mt-8">Your Result</h3>
 
     <div class="score-container">
       <p class="score">76</p>
@@ -9,15 +9,15 @@
 
     <p class="quality">Great</p>
 
-    <p class="conclusion">
+    <p class="conclusion mx-0 my-4 text-center px-9 py-0">
       You scored higher than 65% of the people who have taken these tests.
     </p>
   </div>
 
-  <div class="summary">
-    <h3>Summary</h3>
+  <div class="summary w-80">
+    <h3 class="text-lg font-bold mt-8 mb-5">Summary</h3>
 
-    <div *ngFor="let item of data" class="item">
+    <div *ngFor="let item of data" class="item flex justify-between items-center h-14">
       <p class="{{ item.category | lowercase }}">
         <span class="icon"></span>{{ item.category }}
       </p>

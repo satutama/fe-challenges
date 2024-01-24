@@ -9,7 +9,8 @@ module.exports = {
         'moon': "url('/assets/icons/icon-moon.svg')"
       },
     fontFamily: {
-      'nunitoSans': ['"NunitoSans"', 'Arial', 'sans-serif']
+      'nunitoSans': ['"NunitoSans"', 'Arial', 'sans-serif'],
+      'hanken': ['"Hanken"', 'Arial', 'sans-serif']
     }
   },
   plugins: [],
