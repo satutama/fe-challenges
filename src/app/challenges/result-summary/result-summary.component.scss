@@ -13,7 +13,7 @@
   align-items: center;
 
   background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
-  border-radius: 20px;
+  border-radius: 16px;
   color: white;
 
   .score-container {
@@ -59,28 +59,13 @@
 }
 
 .summary {
-  padding: 0 25px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-
   .item {
-    padding: 0 12px;
-    border-radius: 10px;
-    font-weight: 600;
-
     + .item {
       margin-top: 12px;
     }
 
     p:first-child {
       display: flex;
-    }
-
-    .icon {
-      height: 20px;
-      width: 20px;
-      display: block;
-      margin-right: 8px;
     }
 
     &:has(.reaction) {
@@ -124,7 +109,6 @@
     color: hsl(0, 0%, 50%);
     span {
       color: hsl(0, 0%, 0%);
-      margin-right: 6px;
     }
   }
 
@@ -143,11 +127,5 @@
       background-image: none;
       background-color: hsl(224, 30%, 27%);
     }
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .container {
-    box-shadow: 10px 15px 25px #ededed;
   }
 }
