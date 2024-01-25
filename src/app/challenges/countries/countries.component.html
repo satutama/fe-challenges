@@ -1,14 +1,21 @@
 <section class="flex flex-col h-[calc(100vh-64px)]">
-  <header class="bg-white pl-8 pr-8 pt-4 pb-4 flex justify-between">
-    <h2 class="font-nunitoSans font-bold text-xl">Where in the world?</h2>
+  <header class="bg-white pl-8 pr-8 pt-4 pb-4 ">
+    <div class="flex justify-between max-w-7xl m-auto">
+      <h2 class="font-nunitoSans font-bold text-xl">Where in the world?</h2>
 
-    <button class="flex items-center">
-      <img src="/assets/icons/icon-moon.svg" alt="moon_icon" class="h-4 w-4 mr-2">
-      Dark mode
-    </button>
+      <button class="flex items-center">
+        <img src="/assets/icons/icon-moon.svg" alt="moon_icon" class="h-4 w-4 mr-2">
+        Dark mode
+      </button>
+    </div>
   </header>
 
   <div class="bg-slate-50 flex flex-grow">
-    <app-country-card></app-country-card>
+    <div *ngIf="(countries$ | async) as countries"
+      class="grid grid-cols-1 m-auto gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-10 md:max-w-7xl">
+      <div *ngFor="let country of countries">
+        <app-country-card [country]="country"></app-country-card>
+      </div>
+    </div>
   </div>
 </section>
