@@ -10,8 +10,14 @@
     </div>
   </header>
 
+  <section>
+    <div>
+      <input id="name" placeholder="Search for a country.." type="text" [formControl]="name">
+    </div>
+  </section>
+
   <div class="bg-slate-50 flex flex-grow">
-    <div *ngIf="(countries$ | async) as countries"
+    <div *ngIf="(filteredCountries$ | async) as countries"
       class="grid grid-cols-1 m-auto gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-10 md:max-w-7xl">
       <div *ngFor="let country of countries">
         <app-country-card [country]="country"></app-country-card>
