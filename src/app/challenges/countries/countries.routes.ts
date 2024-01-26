@@ -14,7 +14,7 @@ export const COUNTRIES_ROUTES: Routes = [
         component: CountryListComponent,
       },
       {
-        path: 'country/:name',
+        path: 'country/:code',
         component: CountryComponent,
       },
     ],

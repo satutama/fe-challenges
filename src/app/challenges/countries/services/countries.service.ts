@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Country } from '../country';
+import { CountriesCode } from './country-code.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,9 @@ export class CountriesService {
     this.countries$ = this.getCountries();
   }
 
-  public getCountry(name: string): Observable<Country> {
-    return this.http.get<Country[]>(`${this.API_URL}/name/${name}`).pipe(
-      map((countries) => this.setFirstNativeCommonName(countries[0])),
+  public getCountry(code: string): Observable<Country> {
+    return this.http.get<Country[]>(`${this.API_URL}/alpha/${code}`).pipe(
+      map((countries) => this.parseCountryDetails(countries[0])),
       catchError((error) => throwError(() => error))
     );
   }
@@ -28,7 +29,7 @@ export class CountriesService {
       .pipe(catchError((error) => throwError(() => error)));
   }
 
-  private setFirstNativeCommonName(country: Country): Country {
+  private parseCountryDetails(country: Country): Country {
     let updatedCountry = country;
 
     for (const locale in country.name.nativeName) {
@@ -38,6 +39,23 @@ export class CountriesService {
         : updatedCountry.name.common;
     }
 
+    for (const currency in country.currencies) {
+      const currencies = country.currencies[currency];
+      updatedCountry.commonCurrencyName = currencies.name
+        ? currencies.name
+        : '';
+    }
+
+    updatedCountry.parsedBorders = this.mapCodesWithNames(
+      country.borders ?? []
+    );
+
     return updatedCountry;
+  }
+
+  private mapCodesWithNames(codes: string[]): { [key: string]: string }[] {
+    return codes.map((code) => ({
+      [code]: CountriesCode[code as keyof typeof CountriesCode] || code,
+    }));
   }
 }

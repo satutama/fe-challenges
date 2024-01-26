@@ -1,4 +1,23 @@
 export interface Country {
+  borders: string[];
+  parsedBorders: { [key: string]: string }[];
+  capital: string[];
+  cca3: string;
+  currencies: {
+    [key: string]: {
+      name: string;
+      symbol: string;
+    };
+  };
+  continents: string[];
+  commonCurrencyName: string;
+  flags: {
+    png: string;
+    svg: string;
+    alt: string;
+  };
+  independent: boolean;
+  languages: any;
   name: {
     common: string;
     official: string;
@@ -10,25 +29,12 @@ export interface Country {
     };
     commonNativeName: string;
   };
-  independent: boolean;
-  status: string;
-  unMember: boolean;
-  currencies: any;
-  idd: {
-    root: '+3';
-    suffixes: ['76'];
-  };
-  capital: string[];
-  region: Regions;
-  languages: any;
-  subregion: string;
   population: number;
-  continents: string[];
-  flags: {
-    png: string;
-    svg: string;
-    alt: string;
-  };
+  region: Regions;
+  status: string;
+  subregion: string;
+  tld: string[];
+  unMember: boolean;
 }
 
 export enum Regions {

@@ -67,6 +67,25 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ngFor="let region of regions | keyvalue" angular pipe to show enum in template
 
+nested route in countries (loadChildren).
+Added Country routes
+Refactor countries component and extract country-list component.
+
+Since the common native name has dynamic key, parsing is needed in the countriesService to set the commonNativeName, which then is used in the country component
+
+To set the languages in template
+
+```html
+<span *ngFor="let language of country.languages | keyvalue as languages;index as i">
+  {{ language.value }}
+  <span *ngIf="i < languages.length - 1">,&nbsp;</span>
+</span>
+```
+
+since the languages has dynamic keys.
+
+Added enum for countries code to parse the borders.
+
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```
