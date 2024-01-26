@@ -18,7 +18,7 @@ export interface Country {
     suffixes: ['76'];
   };
   capital: string[];
-  region: string;
+  region: Regions;
   subregion: string;
   population: number;
   continents: string[];
@@ -27,4 +27,12 @@ export interface Country {
     svg: string;
     alt: string;
   };
+}
+
+export enum Regions {
+  Africa = 'Africa',
+  America = 'Americas',
+  Asia = 'Asia',
+  Europe = 'Europe',
+  Oceania = 'Oceania',
 }

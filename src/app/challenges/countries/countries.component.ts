@@ -4,6 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, combineLatest, debounceTime, map, startWith } from 'rxjs';
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { CountryComponent } from './components/country/country.component';
+import { Regions } from './country';
 import { CountriesService, Country } from './services/countries.service';
 
 @Component({
@@ -19,29 +20,37 @@ import { CountriesService, Country } from './services/countries.service';
 })
 export class CountriesComponent implements OnInit {
   public filteredCountries$!: Observable<Country[]>;
+  public regions = Regions;
+
   public name = new FormControl('');
+  public region = new FormControl('');
 
   constructor(private countriesService: CountriesService) {}
 
   ngOnInit(): void {
-    this.filteredCountries$ = this.initCountries();
+    this.filteredCountries$ = this.filterListener();
   }
 
-  private initCountries(): Observable<Country[]> {
+  private filterListener(): Observable<Country[]> {
     return combineLatest([
       this.countriesService.countries$,
-      this.name.valueChanges.pipe(debounceTime(200), startWith(null)),
+      this.name.valueChanges.pipe(debounceTime(200), startWith('')),
+      this.region.valueChanges.pipe(startWith('')),
     ]).pipe(
-      map(([countries, countryName]) => {
-        if (countryName) {
-          return countries.filter((country: Country) =>
+      map(([countries, countryName, region]) => {
+        return countries.filter((country: Country) => {
+          const nameMatches =
+            !countryName ||
             country.name.common
               .toLocaleLowerCase()
-              .includes(countryName.toLowerCase())
-          );
-        }
+              .includes(countryName.toLowerCase());
 
-        return countries;
+          const regionMatches =
+            !region ||
+            country.region.toLocaleLowerCase().includes(region.toLowerCase());
+
+          return nameMatches && regionMatches;
+        });
       })
     );
   }
