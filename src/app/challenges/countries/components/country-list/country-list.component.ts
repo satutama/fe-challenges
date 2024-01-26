@@ -1,28 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { Observable, combineLatest, debounceTime, map, startWith } from 'rxjs';
-import { CountryCardComponent } from './components/country-card/country-card.component';
-import { CountryListComponent } from './components/country-list/country-list.component';
-import { CountryComponent } from './components/country/country.component';
-import { Regions } from './country';
-import { CountriesService, Country } from './services/countries.service';
+import { Country, Regions } from '../../country';
+import { CountriesService } from '../../services/countries.service';
+import { CountryCardComponent } from '../country-card/country-card.component';
 
 @Component({
-  selector: 'app-countries',
+  selector: 'app-country-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    CountryComponent,
-    CountryCardComponent,
-    CountryListComponent,
-  ],
-  templateUrl: './countries.component.html',
+  imports: [CommonModule, ReactiveFormsModule, CountryCardComponent],
+  templateUrl: './country-list.component.html',
+  styleUrls: ['./country-list.component.scss'],
 })
-export class CountriesComponent implements OnInit {
+export class CountryListComponent {
   public filteredCountries$!: Observable<Country[]>;
   public regions = Regions;
 

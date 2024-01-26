@@ -45,18 +45,10 @@ export const routes: Routes = [
   {
     path: 'countries',
     title: 'Countries',
-    loadComponent: () =>
-      import('./challenges/countries/countries.component').then(
-        (mod) => mod.CountriesComponent
+    loadChildren: () =>
+      import('./challenges/countries/countries.routes').then(
+        (mod) => mod.COUNTRIES_ROUTES
       ),
   },
-  {
-    path: 'countries/:name',
-    title: 'Countries',
-    loadComponent: () =>
-      import(
-        './challenges/countries/components/country/country.component'
-      ).then((mod) => mod.CountryComponent),
-  },
-  { path: '**', redirectTo: 'age-calculator' },
+  { path: '**', redirectTo: 'countries' },
 ];
