@@ -38,19 +38,21 @@ export class CountriesComponent implements OnInit {
       this.region.valueChanges.pipe(startWith('')),
     ]).pipe(
       map(([countries, countryName, region]) => {
-        return countries.filter((country: Country) => {
-          const nameMatches =
-            !countryName ||
-            country.name.common
-              .toLocaleLowerCase()
-              .includes(countryName.toLowerCase());
+        return countries
+          .filter((country: Country) => {
+            const nameMatches =
+              !countryName ||
+              country.name.common
+                .toLocaleLowerCase()
+                .includes(countryName.toLowerCase());
 
-          const regionMatches =
-            !region ||
-            country.region.toLocaleLowerCase().includes(region.toLowerCase());
+            const regionMatches =
+              !region ||
+              country.region.toLocaleLowerCase().includes(region.toLowerCase());
 
-          return nameMatches && regionMatches;
-        });
+            return nameMatches && regionMatches;
+          })
+          .sort((a, b) => (a.name.common < b.name.common ? -1 : 1));
       })
     );
   }
