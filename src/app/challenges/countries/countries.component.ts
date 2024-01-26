@@ -6,8 +6,8 @@ import { Observable, combineLatest, debounceTime, map, startWith } from 'rxjs';
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { CountryListComponent } from './components/country-list/country-list.component';
 import { CountryComponent } from './components/country/country.component';
-import { Regions } from './country';
-import { CountriesService, Country } from './services/countries.service';
+import { Country, Regions } from './country';
+import { CountriesService } from './services/countries.service';
 
 @Component({
   selector: 'app-countries',
