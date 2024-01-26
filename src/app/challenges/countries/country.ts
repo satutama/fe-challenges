@@ -3,11 +3,12 @@ export interface Country {
     common: string;
     official: string;
     nativeName: {
-      cat: {
+      [key: string]: {
         official: string;
         common: string;
       };
     };
+    commonNativeName: string;
   };
   independent: boolean;
   status: string;
@@ -19,6 +20,7 @@ export interface Country {
   };
   capital: string[];
   region: Regions;
+  languages: any;
   subregion: string;
   population: number;
   continents: string[];
