@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Country } from '../../services/countries.service';
+import { RouterModule } from '@angular/router';
+import { Country } from '../../country';
 
 @Component({
   selector: 'app-country-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './country-card.component.html',
   styleUrls: ['./country-card.component.scss'],
 })
