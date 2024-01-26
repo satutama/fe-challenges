@@ -1,1 +1,75 @@
-<p>country works!</p>
+<section class="my-4 mx-8">
+  <div
+    *ngIf="country$ | async as country"
+    class="flex flex-1 gap-20 justify-between max-w-7xl m-auto"
+  >
+    <div class="w-1/2">
+      <img
+        [src]="country.flags.svg"
+        alt="flag image"
+        class="border-b-2 border-solid border-b-slate-200"
+      />
+    </div>
+
+    <div class="w-1/2">
+      <h3 class="font-bold text-2xl mt-5">
+        {{ country.name.common }}
+      </h3>
+
+      <div class="flex mt-6">
+        <div class="w-1/2">
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Native Name:</p>
+            <span>{{ country.name.commonNativeName }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Population:</p>
+            <span>{{ country.population | number : "1.0-0" }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Region:</p>
+            <span>{{ country.region }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Sub Region:</p>
+            <span>{{ country.subregion }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Capital:</p>
+            <span>{{ country.capital }}</span>
+          </div>
+        </div>
+
+        <div class="w-1/2">
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Top Level Domain:</p>
+            <span>{{ country.name.commonNativeName }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Currencies:</p>
+            <span>{{ country.population | number : "1.0-0" }}</span>
+          </div>
+
+          <div class="flex">
+            <p class="font-medium mr-2 mb-1">Languages:</p>
+
+            <span
+              *ngFor="
+                let language of country.languages | keyvalue as languages;
+                index as i
+              "
+            >
+              {{ language.value
+              }}<span *ngIf="i < languages.length - 1">,&nbsp;</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
