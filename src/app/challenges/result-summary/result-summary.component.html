@@ -1,31 +1,31 @@
-<div class="container">
-  <div class="result">
-    <h3>Your Result</h3>
+<div class="font-hanken relative top-24 flex flex-wrap justify-center rounded-2xl sm:shadow-lg shadow-slate-300">
+  <div class="result flex flex-col items-center rounded-2xl text-white w-80">
+    <h3 class="text-lg font-bold mt-8">Your Result</h3>
 
-    <div class="score-container">
-      <p class="score">76</p>
+    <div class="score-container flex flex-col justify-center items-center size-44 mt-8 rounded-full">
+      <p class="text-6xl font-bold mb-4">76</p>
       <p class="total">of 100</p>
     </div>
 
-    <p class="quality">Great</p>
+    <p class="text-3xl font-semibold mt-8">Great</p>
 
-    <p class="conclusion">
+    <p class="conclusion mx-0 my-4 text-center px-9 py-0">
       You scored higher than 65% of the people who have taken these tests.
     </p>
   </div>
 
-  <div class="summary">
-    <h3>Summary</h3>
+  <div class="summary py-0 px-6 w-80">
+    <h3 class="text-lg font-bold mt-8 mb-5">Summary</h3>
 
-    <div *ngFor="let item of data" class="item">
-      <p class="{{ item.category | lowercase }}">
-        <span class="icon"></span>{{ item.category }}
+    <div *ngFor="let item of data" class="item font-semibold py-0 px-3 rounded-xl flex justify-between items-center h-14">
+      <p class="flex {{ item.category | lowercase }}">
+        <span class="icon size-5 block mr-2"></span>{{ item.category }}
       </p>
-      <p class="score">
+      <p class="score mr-2">
         <span>{{ item.score }}</span> / 100
       </p>
     </div>
 
-    <button>Continue</button>
+    <button class="rounded-3xl border-none mt-9 mb-7 p-3 w-full text-white text-lg">Continue</button>
   </div>
 </div>

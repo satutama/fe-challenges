@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'ip-address-tracker' },
+  { path: '', pathMatch: 'full', redirectTo: 'countries' },
   {
     path: 'qr-code',
     title: 'QR code',
@@ -42,5 +42,13 @@ export const routes: Routes = [
         './challenges/ip-address-tracker/ip-address-tracker.component'
       ).then((mod) => mod.IpAddressTrackerComponent),
   },
-  { path: '**', redirectTo: 'age-calculator' },
+  {
+    path: 'countries',
+    title: 'Countries',
+    loadChildren: () =>
+      import('./challenges/countries/countries.routes').then(
+        (mod) => mod.COUNTRIES_ROUTES
+      ),
+  },
+  { path: '**', redirectTo: 'countries' },
 ];

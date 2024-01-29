@@ -1,10 +1,14 @@
 <mat-toolbar>
-  <header>
-    <button mat-icon-button [ngClass]="{ opened: sidenav.opened }" (click)="sidenav.toggle()">
+  <header class="flex items-center">
+    <button
+      mat-icon-button
+      [ngClass]="{ opened: sidenav.opened }"
+      (click)="sidenav.toggle()"
+    >
       <mat-icon>menu</mat-icon>
     </button>
 
-    <h1>Front End Mentor Challenges</h1>
+    <h1>Front End Challenges</h1>
   </header>
 </mat-toolbar>
 
@@ -12,7 +16,7 @@
   <mat-sidenav #sidenav mode="over" closed>
     <mat-nav-list *ngFor="let route of routes">
       <a mat-list-item [routerLink]="route.path" routerLinkActive="active">
-        {{route.title}}
+        {{ route.title }}
       </a>
     </mat-nav-list>
   </mat-sidenav>

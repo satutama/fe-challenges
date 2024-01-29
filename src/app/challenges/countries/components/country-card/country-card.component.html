@@ -1,0 +1,31 @@
+<div
+  class="flex flex-col bg-white shadow-sm shadow-slate-200 rounded-lg dark:bg-slate-600 dark:shadow-slate-700"
+>
+  <div class="flex items-center rounded-t-lg lg:h-44 lg:overflow-hidden">
+    <a routerLink="/countries/country/{{ country.cca3 }}">
+      <img
+        [src]="country.flags.svg"
+        alt="flag image"
+        class="h-full w-full border-b-2 border-solid border-b-slate-200 dark:border-none"
+      />
+    </a>
+  </div>
+  <div class="px-4 py-5 dark:text-slate-200">
+    <p class="text-xl font-medium mb-2">{{ country.name.common }}</p>
+
+    <div class="flex">
+      <p class="font-medium mr-1">Population:</p>
+      {{ country.population | number : "1.0-0" }}
+    </div>
+
+    <div class="flex">
+      <p class="font-medium mr-1">Region:</p>
+      {{ country.region }}
+    </div>
+
+    <div class="flex">
+      <p class="font-medium mr-1">Capital:</p>
+      {{ capital }}
+    </div>
+  </div>
+</div>

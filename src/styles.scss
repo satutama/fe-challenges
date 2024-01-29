@@ -1,4 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 @font-face {
   font-family: "Outfit";
   src: url("./assets/fonts/Outfit-Regular.ttf") format("truetype");
@@ -61,6 +64,30 @@
   font-family: "Rubik";
   src: url("assets/fonts/Rubik-VariableFont_wght.ttf") format("truetype");
   font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NunitoSans";
+  src: url("assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 800;
   font-style: normal;
 }
 
