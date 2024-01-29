@@ -2,7 +2,7 @@
   <div class="flex justify-between max-w-7xl m-auto">
     <div class="w-80 flex justify-end items-center relative">
       <input
-        class="w-full rounded-md h-10 pl-10 pr-4 shadow-sm shadow-slate-200"
+        class="w-full rounded-md h-10 pl-10 pr-4 shadow-sm shadow-slate-200 dark:bg-slate-600 dark:shadow-slate-800 dark:text-slate-200"
         id="name"
         placeholder="Search for a country.."
         type="text"
@@ -29,7 +29,7 @@
       <select
         name="region"
         id="region"
-        class="appearance-none row-start-1 col-start-1 pl-5 pr-14 rounded-md shadow-sm shadow-slate-200"
+        class="appearance-none row-start-1 col-start-1 pl-5 pr-14 rounded-md shadow-sm shadow-slate-200 dark:bg-slate-600 dark:shadow-slate-800 dark:text-slate-200"
         [formControl]="region"
       >
         <option disabled hidden value="">Filter by Region</option>
@@ -42,7 +42,7 @@
       </select>
 
       <svg
-        class="pointer-events-none z-10 right-3 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden"
+        class="pointer-events-none z-10 right-3 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden dark:text-slate-200"
         viewBox="0 0 16 16"
         fill="currentColor"
         aria-hidden="true"
@@ -57,7 +57,7 @@
   </div>
 </section>
 
-<div class="px-8 py-4">
+<section class="h-[calc(100vh-196px)] overflow-auto px-8 py-4">
   <div
     *ngIf="filteredCountries$ | async as countries"
     class="grid grid-cols-1 m-auto gap-8 sm:grid-cols-2 md:grid-cols-4 md:gap-10 md:max-w-7xl"
@@ -66,4 +66,4 @@
       <app-country-card [country]="country"></app-country-card>
     </div>
   </div>
-</div>
+</section>

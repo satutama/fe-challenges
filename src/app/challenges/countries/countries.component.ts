@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Observable, combineLatest, debounceTime, map, startWith } from 'rxjs';
@@ -23,16 +23,33 @@ import { CountriesService } from './services/countries.service';
   templateUrl: './countries.component.html',
 })
 export class CountriesComponent implements OnInit {
+  public darkMode = signal<boolean>(
+    JSON.parse(window.localStorage.getItem('darkMode') ?? 'false')
+  );
   public filteredCountries$!: Observable<Country[]>;
   public regions = Regions;
 
   public name = new FormControl('');
   public region = new FormControl('');
 
-  constructor(private countriesService: CountriesService) {}
+  @HostBinding('class.dark') get mode() {
+    return this.darkMode();
+  }
+
+  constructor(private countriesService: CountriesService) {
+    effect(() => {
+      window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
+    });
+  }
 
   ngOnInit(): void {
     this.filteredCountries$ = this.filterListener();
+  }
+
+  public changeMode() {
+    console.log('waaa');
+    this.darkMode.set(!this.darkMode());
+    // document.documentElement.classList.add('dark');
   }
 
   private filterListener(): Observable<Country[]> {

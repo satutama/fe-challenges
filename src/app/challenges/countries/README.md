@@ -86,6 +86,14 @@ since the languages has dynamic keys.
 
 Added enum for countries code to parse the borders.
 
+Adding dark mode.
+
+1. Update tailwind config: Add darkMode: 'class' (this should be placed before the theme)
+2. Add HostBinding which add dark class based on the darkMode signal
+3. Add dark classes in template
+4. Add effect in the constructor to set the darkMode in the local storage
+5. Update darkmode signal to use the value from local storage
+
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```

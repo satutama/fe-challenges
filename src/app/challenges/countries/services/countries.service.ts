@@ -25,7 +25,7 @@ export class CountriesService {
 
   private getCountries() {
     return this.http
-      .get<Country[]>(`${this.API_URL}/all`)
+      .get<Country[]>(`${this.API_URL}/independent?status=true`)
       .pipe(catchError((error) => throwError(() => error)));
   }
 
