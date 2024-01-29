@@ -11,7 +11,6 @@ import { CountryCardComponent } from '../country-card/country-card.component';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, CountryCardComponent],
   templateUrl: './country-list.component.html',
-  styleUrls: ['./country-list.component.scss'],
 })
 export class CountryListComponent {
   public filteredCountries$!: Observable<Country[]>;

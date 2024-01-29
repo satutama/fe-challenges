@@ -10,7 +10,6 @@ import { CountriesService } from '../../services/countries.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './country.component.html',
-  styleUrls: ['./country.component.scss'],
 })
 export class CountryComponent implements OnInit {
   public country$!: Observable<Country>;

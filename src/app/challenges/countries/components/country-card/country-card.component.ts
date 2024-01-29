@@ -8,7 +8,6 @@ import { Country } from '../../country';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './country-card.component.html',
-  styleUrls: ['./country-card.component.scss'],
 })
 export class CountryCardComponent {
   @Input() country!: Country;
