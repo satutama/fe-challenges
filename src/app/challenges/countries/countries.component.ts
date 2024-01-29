@@ -1,25 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Observable, combineLatest, debounceTime, map, startWith } from 'rxjs';
-import { CountryCardComponent } from './components/country-card/country-card.component';
-import { CountryListComponent } from './components/country-list/country-list.component';
-import { CountryComponent } from './components/country/country.component';
 import { Country, Regions } from './country';
 import { CountriesService } from './services/countries.service';
 
 @Component({
   selector: 'app-countries',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    CountryComponent,
-    CountryCardComponent,
-    CountryListComponent,
-  ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './countries.component.html',
 })
 export class CountriesComponent implements OnInit {
@@ -47,9 +37,7 @@ export class CountriesComponent implements OnInit {
   }
 
   public changeMode() {
-    console.log('waaa');
     this.darkMode.set(!this.darkMode());
-    // document.documentElement.classList.add('dark');
   }
 
   private filterListener(): Observable<Country[]> {
