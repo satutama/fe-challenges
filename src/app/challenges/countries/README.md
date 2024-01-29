@@ -12,11 +12,6 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -33,47 +28,42 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshots/list-desktop.jpg)
+![](./screenshots/list-mobile.jpg)
+![](./screenshots/detail-desktop.jpg)
+![](./screenshots/detail-mobile.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/satutama/fe-challenges/tree/master/src/app/challenges/countries)
+- Live Site URL: [Add live site URL here](https://satutama.github.io/fe-challenges/countries)
 
 ## My process
 
+- Add Countries routes to handle the routing of the countries components
+- Using loadchildren, lazy load the newly created Countries routes
+- Refactor countries component and extract country-list component.
+- Style update and add the dark mode style
+
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Angular 16
+- Tailwind
 
 ### What I learned
 
-ngFor="let region of regions | keyvalue" angular pipe to show enum in template
+Using keyvalue pipe to show regions enum in template (the region filter button)
 
-nested route in countries (loadChildren).
-Added Country routes
-Refactor countries component and extract country-list component.
+```html
+<select name="region" id="region" class="appearance-none shadow-sm shadow-slate-200 row-start-1 col-start-1 pl-5 pr-14 rounded-md dark:bg-slate-600 dark:shadow-slate-800 dark:text-slate-200" [formControl]="region">
+  <option disabled hidden value="">Filter by Region</option>
+  <option *ngFor="let region of regions | keyvalue" [value]="region.value">{{ region.key }}</option>
+</select>
+```
 
 Since the common native name has dynamic key, parsing is needed in the countriesService to set the commonNativeName, which then is used in the country component
 
-To set the languages in template
+The languages has dynamic keys as well, below is how I set the languages in template
 
 ```html
 <span *ngFor="let language of country.languages | keyvalue as languages;index as i">
@@ -81,8 +71,6 @@ To set the languages in template
   <span *ngIf="i < languages.length - 1">,&nbsp;</span>
 </span>
 ```
-
-since the languages has dynamic keys.
 
 Added enum for countries code to parse the borders.
 
@@ -94,49 +82,9 @@ Adding dark mode.
 4. Add effect in the constructor to set the darkMode in the local storage
 5. Update darkmode signal to use the value from local storage
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Refactor Country model to CountryDto and Country. CountryDto is the expected model response, and the Country is the model that should be used accross components. So Parsing the response should be refactored as well.
+- Add sorting by population
+- Add sorting by name
+- Add filter option 'Traveled'
