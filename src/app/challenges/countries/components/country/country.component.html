@@ -1,9 +1,34 @@
 <section class="my-4 mx-8">
+  <div class="max-w-7xl mt-10 mx-auto">
+    <a routerLink="/countries">
+      <button
+        class="flex bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 mr-2 mb-2 rounded shadow"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 mr-2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+          />
+        </svg>
+
+        Back
+      </button>
+    </a>
+  </div>
+
   <div
     *ngIf="country$ | async as country"
-    class="flex flex-1 flex-col gap-20 justify-between max-w-7xl m-auto md:flex-row"
+    class="flex flex-1 flex-col gap-20 justify-between max-w-7xl mt-10 mx-auto lg:flex-row"
   >
-    <div class="md:w-1/2">
+    <div class="lg:w-1/2">
       <img
         [src]="country.flags.svg"
         alt="flag image"
@@ -11,12 +36,12 @@
       />
     </div>
 
-    <div class="md:w-1/2">
+    <div class="lg:w-1/2">
       <h3 class="font-bold text-2xl mt-5">
         {{ country.name.common }}
       </h3>
 
-      <div class="flex flex-col mt-6 gap-10 md:flex-row">
+      <div class="flex flex-col mt-6 gap-10 lg:flex-row">
         <div class="w-1/2">
           <div class="flex items-baseline">
             <p class="font-medium text-lg mr-2 mb-1">Native Name:</p>
@@ -71,14 +96,14 @@
         </div>
       </div>
 
-      <div class="mt-10">
-        <h3 class="font-medium text-lg">Border Countries:</h3>
+      <div class="mt-10 flex flex-wrap items-center">
+        <h3 class="font-medium text-lg mr-4">Border Countries:</h3>
 
         <ng-container *ngFor="let border of country.parsedBorders">
           <ng-container *ngFor="let entry of border | keyvalue">
             <a routerLink="/countries/country/{{ entry.key }}">
               <button
-                class="bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 mr-2 mb-2 border border-gray-400 rounded shadow"
+                class="bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 mr-2 mb-2 rounded shadow"
               >
                 {{ entry.value }}
               </button>
