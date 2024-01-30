@@ -1,31 +1,25 @@
 <div class="shell">
-  <div class="container">
-    <div class="header">
+  <div
+    class="relative top-52 my-0 mx-auto p-6 min-w-[280px] max-w-[500px] bg-white rounded-xl shadow"
+  >
+    <section class="flex">
       <img src="assets/icons/icon-star.svg" />
 
-      <h2>FAQs</h2>
-    </div>
+      <h2 class="my-0 mx-3 text-5xl font-bold">FAQs</h2>
+    </section>
 
-    <div class="content">
-      <div *ngFor="let faq of faqs; index as i" class="faq">
-        <div class="question" (click)="showFaq(i)">
-          <p>{{ faq.question }}</p>
+    <section class="mt-7">
+      <details class="mb-4" *ngFor="let faq of faqs; index as i">
+        <summary class="list-none">
+          <p
+            class="font-semibold cursor-pointer pr-5 hover:text-[color:hsl(292,16%,49%)]"
+          >
+            {{ faq.question }}
+          </p>
+        </summary>
 
-          <div class="icon">
-            <button mat-icon-button>
-              <svg-icon [src]="
-                  faq.displayed
-                    ? 'assets/icons/icon-minus.svg'
-                    : 'assets/icons/icon-plus.svg'
-                " [attr.alt]="faq.displayed ? 'icon-opened' : 'icon-closed'"></svg-icon>
-            </button>
-          </div>
-        </div>
-
-        <div class="answer" [ngClass]="{ hidden: !faq.displayed }">
-          <p>{{ faq.answer }}</p>
-        </div>
-      </div>
-    </div>
+        <p class="mt-4 text-[color:hsl(292,16%,49%)]">{{ faq.answer }}</p>
+      </details>
+    </section>
   </div>
 </div>

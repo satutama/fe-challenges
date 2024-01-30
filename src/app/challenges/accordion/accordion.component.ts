@@ -1,8 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 
 const FAQS = [
   {
@@ -30,20 +27,10 @@ const FAQS = [
 @Component({
   selector: 'app-accordion',
   standalone: true,
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    MatButtonModule,
-    AngularSvgIconModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent {
-  public faqs = FAQS.map((faq) => ({ ...faq, displayed: false }));
-  public showFirst = true;
-
-  public showFaq(index: number): void {
-    this.faqs[index].displayed = !this.faqs[index].displayed;
-  }
+  public faqs = FAQS;
 }
