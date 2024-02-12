@@ -1,54 +1,54 @@
-<section class="h-full w-full bg-[hsl(222,26%,31%)]">
+<section class="{{theme}}-calculator h-full w-full">
   <div class="flex flex-col p-5 min-w-[320px] max-w-[400px] mx-auto">
     <div class="grid grid-cols-4 my-8 items-end">
-      <h3 class="col-span-2 text-white text-2xl font-bold">calc</h3>
+      <h3 class="col-span-2 default-color text-2xl font-bold">calc</h3>
 
-      <p class="text-white text-xs text-center font-semibold">THEME</p>
+      <p class="default-color text-xs text-center font-semibold">THEME</p>
 
       <div class="flex flex-col ml-3">
         <div class="flex justify-between px-2 font-semibold">
-          <label class="text-white text-xs" for="first" onclick="">1</label>
-          <label class="text-white text-xs" for="second" onclick="">2</label>
-          <label class="text-white text-xs" for="third" onclick="">3</label>
+          <label class="default-color text-xs" for="first" onclick="">1</label>
+          <label class="default-color text-xs" for="second" onclick="">2</label>
+          <label class="default-color text-xs" for="third" onclick="">3</label>
         </div>
 
-        <div class="mt-[5px] flex justify-between bg-[hsl(223,31%,20%)] rounded-3xl p-1">
-          <input id="first" class="appearance-none checked:bg-red-500 size-4 rounded-full" name="state-d" type="radio" checked="" />
-          <input id="second" class="appearance-none checked:bg-red-500 size-4 rounded-full" name="state-d" type="radio" checked="checked" />
-          <input id="third" class="appearance-none checked:bg-red-500 size-4 rounded-full" name="state-d" type="radio" />
-        </div>
+        <form [formGroup]="themeForm" class="mt-[5px] flex justify-between rounded-3xl p-1 button-container">
+          <input id="first" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="dark" />
+          <input id="second" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="light" />
+          <input id="third" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="violet" />
+        </form>
 
       </div>
     </div>
 
-    <div class="h-20 w-full mx-auto rounded-xl bg-[hsl(224,36%,15%)]">
-      <p class="text-4xl text-right p-5 text-white font-bold">399,981</p>
+    <div class="h-20 w-full mx-auto rounded-xl result-container">
+      <p class="text-4xl text-right p-5 font-bold default-color">399,981</p>
     </div>
 
-    <div class="bg-[hsl(223,31%,20%)] rounded-xl mt-4">
-      <div class="p-6 text-gray-800 grid grid-cols-4 gap-4 text-xl">
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">7</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">8</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">9</button>
-        <button class="font-mono text-white font-semibold border-b-4 border-b-[hsl(224,28%,35%)] bg-[hsl(225,21%,49%)] rounded-md text-2xl p-2">DEL</button>
+    <div class="button-container rounded-xl mt-4">
+      <div class="p-6 grid grid-cols-4 gap-4 text-xl">
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">7</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">8</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">9</button>
+        <button class="font-mono  font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button">DEL</button>
 
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">4</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">5</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">6</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">+</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">4</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">5</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">6</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">+</button>
 
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">1</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">2</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">3</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">-</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">1</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">2</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">3</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">-</button>
 
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">.</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">0</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">/</button>
-        <button class="font-mono bg-[hsl(30,25%,89%)] border-b-4 border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)] font-semibold rounded-md text-2xl p-2">x</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">.</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">0</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">/</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">x</button>
 
-        <button class="font-mono col-span-2 text-white font-semibold border-b-4 border-b-[hsl(224,28%,35%)] bg-[hsl(225,21%,49%)] rounded-md text-2xl p-2">RESET</button>
-        <button class="font-mono col-span-2 text-white font-semibold border-b-4 border-b-[hsl(6,70%,34%)] bg-[hsl(6,63%,50%)] rounded-md text-2xl p-2">=</button>
+        <button class="font-mono font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button col-span-2">RESET</button>
+        <button class="font-mono col-span-2 font-semibold border-b-4 rounded-md text-2xl p-2 third-button">=</button>
       </div>
     </div>
   </div>
