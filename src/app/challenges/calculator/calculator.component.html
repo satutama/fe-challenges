@@ -21,30 +21,28 @@
       </div>
     </div>
 
-    <div class="h-20 w-full mx-auto rounded-xl result-container">
-      <p class="text-4xl text-right p-5 font-bold default-color">399,981</p>
-    </div>
+    <input class="appearance-none h-20 w-full rounded-xl text-right text-3xl font-bold p-6 result-container" type="number" [formControl]="calculationControl">
 
     <div class="button-container rounded-xl mt-4">
       <div class="p-6 grid grid-cols-4 gap-4 text-xl">
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">7</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">8</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">9</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(7)">7</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(8)">8</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(9)">9</button>
         <button class="font-mono  font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button">DEL</button>
 
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">4</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">5</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">6</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(4)">4</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(5)">5</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(6)">6</button>
         <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">+</button>
 
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">1</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">2</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">3</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(1)">1</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(2)">2</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(3)">3</button>
         <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">-</button>
 
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">.</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">0</button>
-        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">/</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(1)">.</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(0)">0</button>
+        <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="calculateNumber(1)">/</button>
         <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button">x</button>
 
         <button class="font-mono font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button col-span-2">RESET</button>

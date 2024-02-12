@@ -16,6 +16,8 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     JSON.parse(window.localStorage.getItem('calculatorTheme') ?? '1')
   );
 
+  public calculationControl = new FormControl<null | number>(null);
+
   private readonly subscriptions = new Subscription();
 
   constructor() {
@@ -34,6 +36,18 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  public calculateNumber(number: number): void {
+    let updatedValue;
+
+    if (this.calculationControl.value) {
+      updatedValue = Number(`${this.calculationControl.value}${number}`);
+    } else {
+      updatedValue = Number(`${number}`);
+    }
+
+    this.calculationControl.setValue(updatedValue);
   }
 
   public get theme() {
