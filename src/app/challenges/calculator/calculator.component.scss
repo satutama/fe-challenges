@@ -62,7 +62,7 @@
   }
 
   .third-button {
-    @apply text-white  border-b-[hsl(25,99%,27%)] bg-[hsl(25,98%,40%)];
+    @apply text-white  border-b-[hsl(25,99%,27%)] bg-[hsl(25,98%,40%)] hover:bg-[hsl(25,98%,52%)];
   }
 }
 

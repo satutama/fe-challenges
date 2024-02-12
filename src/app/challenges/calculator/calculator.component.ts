@@ -1,11 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { Component, OnDestroy, OnInit, effect, signal } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-calculator',
@@ -14,12 +10,39 @@ import {
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './calculator.component.html',
 })
-export class CalculatorComponent {
-  themeForm = new FormGroup({
-    theme: new FormControl(1),
-  });
+export class CalculatorComponent implements OnInit, OnDestroy {
+  public themeControl = new FormControl(1, { nonNullable: true });
+  public selectedTheme = signal<number>(
+    JSON.parse(window.localStorage.getItem('calculatorTheme') ?? '1')
+  );
+
+  private readonly subscriptions = new Subscription();
+
+  constructor() {
+    effect(() => {
+      window.localStorage.setItem(
+        'calculatorTheme',
+        JSON.stringify(this.selectedTheme())
+      );
+    });
+  }
+
+  public ngOnInit(): void {
+    this.themeControl.setValue(this.selectedTheme());
+    this.subscriptions.add(this.themeListener());
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   public get theme() {
-    return this.themeForm.controls.theme.value;
+    return this.themeControl.value;
+  }
+
+  private themeListener(): Subscription {
+    return this.themeControl.valueChanges.subscribe((value) =>
+      this.selectedTheme.set(value)
+    );
   }
 }
