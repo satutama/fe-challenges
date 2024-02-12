@@ -1,4 +1,4 @@
-<section class="{{theme}}-calculator h-full w-full">
+<section class="h-full w-full" [ngClass]="theme === 1 ? 'dark-calculator': theme === 2 ? 'light-calculator': 'violet-calculator' ">
   <div class="flex flex-col p-5 min-w-[320px] max-w-[400px] mx-auto">
     <div class="grid grid-cols-4 my-8 items-end">
       <h3 class="col-span-2 default-color text-2xl font-bold">calc</h3>
@@ -12,10 +12,10 @@
           <label class="default-color text-xs" for="third" onclick="">3</label>
         </div>
 
-        <form [formGroup]="themeForm" class="mt-[5px] flex justify-between rounded-3xl p-1 button-container">
-          <input id="first" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="dark" />
-          <input id="second" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="light" />
-          <input id="third" class="appearance-none size-4 rounded-full theme-radio cursor-pointer" name="state-d" type="radio" formControlName="theme" value="violet" />
+        <form [formGroup]="themeForm" class="mt-[5px] flex justify-between">
+          <input type="range" min="1" max="3" value="1"
+            class="appearance-none cursor-pointer w-20 rounded-3xl p-1 button-container theme-slider [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full"
+            formControlName="theme">
         </form>
 
       </div>

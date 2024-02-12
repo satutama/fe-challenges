@@ -16,7 +16,7 @@ import {
 })
 export class CalculatorComponent {
   themeForm = new FormGroup({
-    theme: new FormControl('dark'),
+    theme: new FormControl(1),
   });
 
   public get theme() {

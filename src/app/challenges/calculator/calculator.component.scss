@@ -13,6 +13,10 @@
     @apply bg-[hsl(224,36%,15%)];
   }
 
+  .theme-slider {
+    @apply bg-[hsl(223,31%,20%)] [&::-webkit-slider-thumb]:bg-[hsl(6,63%,50%)] [&::-webkit-slider-thumb]:hover:bg-[hsl(6,63%,62%)];
+  }
+
   .theme-radio {
     @apply checked:bg-[hsl(6,63%,50%)] checked:hover:bg-[hsl(6,63%,62%)];
   }
@@ -45,12 +49,8 @@
     @apply bg-[hsl(0,0%,93%)];
   }
 
-  .theme-radio {
-    @apply checked:bg-[hsl(25,98%,40%)] checked:hover:bg-[hsl(25,98%,63%)];
-  }
-
-  .button-container {
-    @apply bg-[hsl(0,5%,81%)];
+  .theme-slider {
+    @apply bg-[hsl(0,5%,81%)] [&::-webkit-slider-thumb]:bg-[hsl(25,98%,40%)] [&::-webkit-slider-thumb]:hover:bg-[hsl(25,98%,63%)];
   }
 
   .main-button {
@@ -77,8 +77,8 @@
     @apply bg-[hsl(268,71%,12%)];
   }
 
-  .theme-radio {
-    @apply checked:bg-[hsl(176,100%,44%)] checked:hover:bg-[hsl(176,100%,60%)];
+  .theme-slider {
+    @apply bg-[hsl(268,71%,12%)] [&::-webkit-slider-thumb]:bg-[hsl(176,100%,44%)] [&::-webkit-slider-thumb]:hover:bg-[hsl(176,100%,60%)];
   }
 
   .button-container {
