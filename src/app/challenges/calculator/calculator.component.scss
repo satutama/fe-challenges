@@ -26,15 +26,15 @@
   }
 
   .main-button {
-    @apply bg-[hsl(30,25%,89%)] border-b-[hsl(28,16%,65%)] text-[hsl(221,14%,31%)];
+    @apply bg-[hsl(30,25%,89%)] border-b-[hsl(28,16%,65%)] hover:bg-[hsl(30,25%,99%)] text-[hsl(221,14%,31%)];
   }
 
   .secondary-button {
-    @apply text-white border-b-[hsl(224,28%,35%)] bg-[hsl(225,21%,49%)];
+    @apply text-white border-b-[hsl(224,28%,35%)] bg-[hsl(225,21%,49%)] hover:bg-[hsl(225,21%,52%)];
   }
 
   .third-button {
-    @apply text-white  border-b-[hsl(6,70%,34%)] bg-[hsl(6,63%,50%)];
+    @apply text-white  border-b-[hsl(6,70%,34%)] bg-[hsl(6,63%,50%)] hover:bg-[hsl(6,63%,60%)];
   }
 }
 
