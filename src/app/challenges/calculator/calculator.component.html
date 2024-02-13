@@ -48,7 +48,7 @@
         <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="applyOperator(operator.DIVIDE)">/</button>
         <button class=" font-mono border-b-4 font-semibold rounded-md text-2xl p-2 main-button" (click)="applyOperator(operator.MULTIPLY)">x</button>
 
-        <button class="font-mono font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button col-span-2">RESET</button>
+        <button class="font-mono font-semibold border-b-4 rounded-md text-2xl p-2 secondary-button col-span-2" (click)="applyOperator(operator.RESET)">RESET</button>
         <button class="font-mono col-span-2 font-semibold border-b-4 rounded-md text-2xl p-2 third-button" (click)="applyOperator(operator.EVALUATE)">=</button>
       </div>
     </div>
