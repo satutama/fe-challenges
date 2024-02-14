@@ -67,52 +67,29 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   }
 
   public applyOperator(operator: OPERATOR): void {
-    const firstInputAvailable = !!this.firstInput();
     switch (operator) {
       case OPERATOR.DELETE:
-        this.calculationControl.setValue(null);
+        this.deleteMemories();
         break;
       case OPERATOR.ADD:
-        this.operatorClicked();
+        this.operatorClicked(OPERATOR.ADD);
         break;
       case OPERATOR.SUBSTRACT:
-        if (firstInputAvailable) {
-          this.evaluate();
-        }
-        this.calculationOperator.set(OPERATOR.SUBSTRACT);
-        this.firstInput.set(Number(this.calculationControl.value));
-        this.memory.set(`${this.firstInput()} - `);
-        this.calculationControl.setValue(null);
+        this.operatorClicked(OPERATOR.SUBSTRACT);
         break;
       case OPERATOR.DIVIDE:
-        if (firstInputAvailable) {
-          console.log(this.firstInput());
-
-          this.evaluate();
-        }
-        this.calculationOperator.set(OPERATOR.DIVIDE);
-        this.firstInput.set(Number(this.calculationControl.value));
-        this.memory.set(`${this.firstInput()} / `);
-        this.calculationControl.setValue(null);
+        this.operatorClicked(OPERATOR.DIVIDE);
         break;
       case OPERATOR.MULTIPLY:
-        if (firstInputAvailable) {
-          this.evaluate();
-        }
-        this.calculationOperator.set(OPERATOR.MULTIPLY);
-        this.firstInput.set(Number(this.calculationControl.value));
-        this.memory.set(`${this.firstInput()} * `);
-        this.calculationControl.setValue(null);
+        this.operatorClicked(OPERATOR.MULTIPLY);
         break;
       case OPERATOR.EVALUATE:
-        this.evaluate();
+        const calculationOperator = this.calculationOperator();
+        this.evaluate(calculationOperator);
         break;
       case OPERATOR.RESET:
-        this.firstInput.set(null);
-        this.secondInput.set(null);
-        this.calculationOperator.set(null);
+        this.deleteMemories();
         this.calculationControl.setValue(null);
-        this.memory.set(null);
     }
   }
 
@@ -123,7 +100,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   private calculate(
     firstInput: number,
     secondInput: number,
-    operator: OPERATOR
+    operator: OPERATOR | null
   ): number {
     switch (operator) {
       case OPERATOR.ADD:
@@ -139,56 +116,66 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     }
   }
 
-  private operatorClicked() {
+  private operatorClicked(operator: OPERATOR) {
     // continue here - refactor and DRY
     const firstInput = this.firstInput();
     const secondInput = this.secondInput();
     const currentInput = this.calculationControl.value;
+    const activeOperator = this.calculationOperator();
 
+    /*check if there's an input*/
     if (!!currentInput) {
-      if (!!secondInput) {
-        this.calculationOperator.set(OPERATOR.ADD);
+      this.calculationOperator.set(operator); // set active operator
+      this.secondInput.set(null); // remove second input
+
+      /*  if there's already second input, set as the first input.
+          for now, if there's a second input, first input must be available as well.
+          So check on first not needed in this case */
+      if (!!secondInput || !firstInput) {
         this.firstInput.set(Number(currentInput));
-        this.memory.set(`${this.firstInput()} + `);
+        this.memory.set(`${this.firstInput()} ${operator} `);
         this.calculationControl.setValue(null);
       } else if (!!firstInput) {
-        const result = firstInput + Number(currentInput);
+        /*  If there's no second input then we check on the first input.
+            If it is available then we calculate the current and the first input.
+            Then we set the result as the first input. */
+
+        const result = this.calculate(
+          firstInput,
+          Number(currentInput),
+          activeOperator
+        );
+
         this.firstInput.set(result);
-        this.secondInput.set(null);
-        this.memory.set(`${this.firstInput()} + `);
-        this.calculationControl.setValue(null);
-        console.log(this.firstInput());
-      } else {
-        this.calculationOperator.set(OPERATOR.ADD);
-        this.firstInput.set(Number(this.calculationControl.value));
-        this.memory.set(`${this.firstInput()} + `);
+        this.memory.set(`${this.firstInput()} ${operator} `);
         this.calculationControl.setValue(null);
       }
-    } else {
-      return;
     }
   }
 
-  private evaluate() {
-    const current = this.calculationControl.value;
-    if (current) {
-      this.secondInput.set(Number(this.calculationControl.value));
-    }
+  private evaluate(operator: OPERATOR | null) {
     const firstInput = this.firstInput() ?? null;
     const secondInput = this.secondInput() ?? null;
-    const calculationOperator = this.calculationOperator() ?? null;
+    const current = this.calculationControl.value;
 
-    if (firstInput && secondInput && calculationOperator) {
-      this.memory.set(
-        `${this.firstInput()} ${calculationOperator} ${this.secondInput()}`
-      );
-      const result = this.calculate(
-        firstInput,
-        secondInput,
-        calculationOperator
-      );
-      this.calculationControl.setValue(`${result}`);
+    if (operator && !secondInput) {
+      if (!!current && !!firstInput) {
+        this.secondInput.set(Number(current));
+        this.memory.set(
+          `${this.firstInput()} ${operator} ${this.secondInput()}`
+        );
+        const result = this.calculate(firstInput, Number(current), operator);
+
+        this.calculationControl.setValue(`${result}`);
+      }
     }
+  }
+
+  private deleteMemories() {
+    this.firstInput.set(null);
+    this.secondInput.set(null);
+    this.calculationOperator.set(null);
+    this.memory.set(null);
   }
   private themeListener(): Subscription {
     return this.themeControl.valueChanges.subscribe((value) =>
