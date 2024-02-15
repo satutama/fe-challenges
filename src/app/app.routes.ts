@@ -43,6 +43,14 @@ export const routes: Routes = [
       ).then((mod) => mod.IpAddressTrackerComponent),
   },
   {
+    path: 'calculator',
+    title: 'Calculator',
+    loadComponent: () =>
+      import('./challenges/calculator/calculator.component').then(
+        (mod) => mod.CalculatorComponent
+      ),
+  },
+  {
     path: 'countries',
     title: 'Countries',
     loadChildren: () =>
