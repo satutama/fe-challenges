@@ -16,7 +16,7 @@ export class CalculatorService {
   public applyOperator(operator: OPERATOR, formInput: number): void {
     switch (operator) {
       case OPERATOR.DELETE:
-        this.deleteMemories();
+        this.deleteMemories(formInput);
         break;
       case OPERATOR.ADD:
         this.operatorClicked(OPERATOR.ADD, formInput);
@@ -96,11 +96,17 @@ export class CalculatorService {
     }
   }
 
-  private deleteMemories() {
+  private deleteMemories(currentInput?: number) {
     this.firstOperand.set(null);
     this.secondOperand.set(null);
     this.operator.set(null);
     this.memory.set(null);
+
+    if (currentInput) {
+      this.currentInput.set(currentInput);
+    } else {
+      this.currentInput.set(null);
+    }
   }
 
   private calculate(
