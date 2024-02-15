@@ -62,29 +62,7 @@ export class CalculatorComponent implements OnInit, OnDestroy {
 
   public applyOperator(operator: OPERATOR): void {
     const formValue = Number(this.calculationControl.value);
-
-    switch (operator) {
-      case OPERATOR.DELETE:
-        this.calculatorService.deleteMemories();
-        break;
-      case OPERATOR.ADD:
-        this.calculatorService.operatorClicked(OPERATOR.ADD, formValue);
-        break;
-      case OPERATOR.SUBSTRACT:
-        this.calculatorService.operatorClicked(OPERATOR.SUBSTRACT, formValue);
-        break;
-      case OPERATOR.DIVIDE:
-        this.calculatorService.operatorClicked(OPERATOR.DIVIDE, formValue);
-        break;
-      case OPERATOR.MULTIPLY:
-        this.calculatorService.operatorClicked(OPERATOR.MULTIPLY, formValue);
-        break;
-      case OPERATOR.EVALUATE:
-        this.calculatorService.evaluate(formValue);
-        break;
-      case OPERATOR.RESET:
-        this.calculatorService.deleteMemories();
-    }
+    this.calculatorService.applyOperator(operator, formValue);
 
     const currentInput =
       this.calculatorService.currentInput()?.toString() || null;

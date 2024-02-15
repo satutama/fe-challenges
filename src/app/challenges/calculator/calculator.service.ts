@@ -13,14 +13,39 @@ export class CalculatorService {
 
   constructor() {}
 
-  public operatorClicked(operator: OPERATOR, currentInput?: number | null) {
+  public applyOperator(operator: OPERATOR, formInput: number): void {
+    switch (operator) {
+      case OPERATOR.DELETE:
+        this.deleteMemories();
+        break;
+      case OPERATOR.ADD:
+        this.operatorClicked(OPERATOR.ADD, formInput);
+        break;
+      case OPERATOR.SUBSTRACT:
+        this.operatorClicked(OPERATOR.SUBSTRACT, formInput);
+        break;
+      case OPERATOR.DIVIDE:
+        this.operatorClicked(OPERATOR.DIVIDE, formInput);
+        break;
+      case OPERATOR.MULTIPLY:
+        this.operatorClicked(OPERATOR.MULTIPLY, formInput);
+        break;
+      case OPERATOR.EVALUATE:
+        this.evaluate(formInput);
+        break;
+      case OPERATOR.RESET:
+        this.deleteMemories();
+    }
+  }
+
+  private operatorClicked(operator: OPERATOR, currentInput?: number | null) {
     // continue here - refactor and DRY
     const firstInput = this.firstOperand();
     const secondInput = this.secondOperand();
     const activeOperator = this.operator();
 
     /*check if there's an input*/
-    if (!!currentInput) {
+    if (!!currentInput || currentInput === 0) {
       this.operator.set(operator); // set active operator
       this.secondOperand.set(null); // remove second input
 
@@ -49,14 +74,17 @@ export class CalculatorService {
     }
   }
 
-  public evaluate(currentInput?: number) {
+  private evaluate(currentInput?: number) {
     const firstInput = this.firstOperand() ?? null;
     const secondInput = this.secondOperand() ?? null;
 
     const operator = this.operator();
 
     if (operator && !secondInput) {
-      if ((!!currentInput || currentInput === 0) && !!firstInput) {
+      if (
+        (!!currentInput || currentInput === 0) &&
+        (!!firstInput || firstInput === 0)
+      ) {
         this.secondOperand.set(currentInput);
         this.memory.set(
           `${this.firstOperand()} ${operator} ${this.secondOperand()}`
@@ -68,12 +96,11 @@ export class CalculatorService {
     }
   }
 
-  public deleteMemories() {
+  private deleteMemories() {
     this.firstOperand.set(null);
     this.secondOperand.set(null);
     this.operator.set(null);
     this.memory.set(null);
-    this.currentInput.set(null);
   }
 
   private calculate(
