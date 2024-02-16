@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'countries' },
+  { path: '', pathMatch: 'full', redirectTo: 'calculator' },
   {
     path: 'qr-code',
     title: 'QR code',
