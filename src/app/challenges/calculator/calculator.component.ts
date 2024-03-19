@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, effect, signal } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CalculatorService } from './calculator.service';
 
@@ -24,7 +29,9 @@ export enum OPERATOR {
 export class CalculatorComponent implements OnInit, OnDestroy {
   public operator = OPERATOR;
 
-  public themeControl = new FormControl(1, { nonNullable: true });
+  public themeControl = new FormGroup({
+    theme: new FormControl(1, { nonNullable: true }),
+  });
   public selectedTheme = signal<number>(
     JSON.parse(window.localStorage.getItem('calculatorTheme') ?? '1')
   );
@@ -44,7 +51,9 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.themeControl.setValue(this.selectedTheme());
+    console.log(this.selectedTheme());
+
+    this.themeControl.controls.theme.setValue(this.selectedTheme());
     this.subscriptions.add(this.themeListener());
   }
 
@@ -70,12 +79,8 @@ export class CalculatorComponent implements OnInit, OnDestroy {
     this.calculationControl.setValue(currentInput);
   }
 
-  public get theme() {
-    return this.themeControl.value;
-  }
-
   private themeListener(): Subscription {
-    return this.themeControl.valueChanges.subscribe((value) =>
+    return this.themeControl.controls.theme.valueChanges.subscribe((value) =>
       this.selectedTheme.set(value)
     );
   }
