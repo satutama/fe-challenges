@@ -30,11 +30,12 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   public operator = OPERATOR;
 
   public themeControl = new FormGroup({
-    theme: new FormControl(1, { nonNullable: true }),
+    theme: new FormControl('dark', { nonNullable: true }),
   });
-  public selectedTheme = signal<number>(
-    JSON.parse(window.localStorage.getItem('calculatorTheme') ?? '1')
-  );
+
+  public localStorageTheme =
+    window.localStorage.getItem('calculatorTheme') ?? 'dark';
+  public selectedTheme = signal<string>(this.localStorageTheme);
 
   public memory = this.calculatorService.memory;
   public calculationControl = new FormControl<null | string>(null);
@@ -42,12 +43,9 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   private readonly subscriptions = new Subscription();
 
   constructor(private calculatorService: CalculatorService) {
-    effect(() => {
-      window.localStorage.setItem(
-        'calculatorTheme',
-        JSON.stringify(this.selectedTheme())
-      );
-    });
+    effect(() =>
+      window.localStorage.setItem('calculatorTheme', this.selectedTheme())
+    );
   }
 
   public ngOnInit(): void {

@@ -8,7 +8,7 @@
   </header>
 </mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container class="h-[calc(100%-40px)] md:h-[calc(100%-64px)]">
   <mat-sidenav #sidenav mode="over" closed>
     <mat-nav-list *ngFor="let route of routes">
       <a mat-list-item [routerLink]="route.path" routerLinkActive="active">
@@ -17,7 +17,7 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content style="height: 100%">
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

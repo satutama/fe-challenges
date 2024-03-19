@@ -1,4 +1,4 @@
-<section class="min-h-full min-w-96" [ngClass]="selectedTheme() == 1 ? 'dark-calculator': selectedTheme() == 2 ? 'light-calculator': 'violet-calculator' ">
+<section class="min-h-full min-w-96" [ngClass]="selectedTheme() == 'dark' ? 'dark-calculator': selectedTheme() == 'light' ? 'light-calculator': 'violet-calculator' ">
   <div class="flex flex-col p-5 max-w-96 mx-auto">
     <div class="grid grid-cols-4 my-8 items-end">
       <h1 class="col-span-2 default-color text-2xl font-bold">calc</h1>
@@ -15,9 +15,9 @@
           </div>
 
           <div class="mt-[5px] flex justify-between rounded-3xl p-1 button-container">
-            <input id="first" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="1" formControlName="theme" aria-label="Theme 1" />
-            <input id="second" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="2" formControlName="theme" aria-label="Theme 2" />
-            <input id="third" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="3" formControlName="theme" aria-label="Theme 3" />
+            <input id="first" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="dark" formControlName="theme" aria-label="Theme 1" />
+            <input id="second" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="light" formControlName="theme" aria-label="Theme 2" />
+            <input id="third" class="appearance-none cursor-pointer size-4 rounded-3xl theme-radio" type="radio" value="violet" formControlName="theme" aria-label="Theme 3" />
           </div>
         </form>
       </fieldset>
