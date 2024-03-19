@@ -51,8 +51,6 @@ export class CalculatorComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    console.log(this.selectedTheme());
-
     this.themeControl.controls.theme.setValue(this.selectedTheme());
     this.subscriptions.add(this.themeListener());
   }
