@@ -58,5 +58,13 @@ export const routes: Routes = [
         (mod) => mod.COUNTRIES_ROUTES
       ),
   },
+  {
+    path: 'weather',
+    title: 'Weather',
+    loadComponent: () =>
+      import('./challenges/weather/weather.component').then(
+        (mod) => mod.WeatherComponent
+      ),
+  },
   { path: '**', redirectTo: 'countries' },
 ];
