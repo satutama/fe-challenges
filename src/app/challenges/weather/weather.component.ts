@@ -15,4 +15,6 @@ export class WeatherComponent {
   public bgURL = this.isDay
     ? "bg-[url('/assets/images/weather/day.jpg')]"
     : "bg-[url('/assets/images/weather/night.jpg')]";
+
+  public today: number = Date.now();
 }

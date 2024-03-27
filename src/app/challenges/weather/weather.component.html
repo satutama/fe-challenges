@@ -1,6 +1,12 @@
 <div class="rounded-lg w-80 shadow-sky-950 shadow-2xl mt-14 h-fit">
-  <div class="flex h-40 bg-cover rounded-t-lg shadow-inner" [ngClass]="bgURL">
-    <div class="flex flex-col justify-center items-center text-white shadow-2xl  p-4 h-full w-full rounded-t-lg">
+  <div class="flex flex-col h-40 bg-cover rounded-t-lg shadow-inner" [ngClass]="bgURL">
+
+    <div class="flex flex-row justify-between p-2 text-white font-medium">
+      <p>Current weather</p>
+      <p>{{today | date:'shortTime'}}</p>
+    </div>
+
+    <div class="flex flex-col justify-center items-center text-white shadow-2xl px-4 pt-0 pb-4 h-full w-full rounded-t-lg">
       <p class="text-xl">Jakarta</p>
       <p class="text-4xl font-semibold">30 &deg;C</p>
     </div>
@@ -14,40 +20,43 @@
     <div class="grid grid-cols-2 grid-rows-2">
       <div class="flex flex-row gap-4 items-center p-4">
         <div class="flex flex-col text-center">
-          <span class="material-symbols-outlined text-4xl text-blue-400">
-            mode_cool
-          </span>
-          <span>min</span>
-        </div>
-        <p>-10 &deg;C</p>
-      </div>
-
-      <div class="flex flex-row gap-4 items-center p-4">
-        <div class="flex flex-col text-center">
           <span class="material-symbols-outlined text-4xl text-red-400">
             heat
           </span>
-          <span>max</span>
+
+          <span class="font-medium">High</span>
         </div>
-        <p>4 &deg;C</p>
+        <p class="font-medium">4 &deg;C</p>
       </div>
 
       <div class="flex flex-row gap-4 items-center p-4">
         <div class="flex flex-col text-center">
-          <span class="material-symbols-outlined text-4xl text-grey-400">
+          <span class="material-symbols-outlined text-4xl text-blue-400">
+            mode_cool
+          </span>
+
+          <span class="font-medium">Low</span>
+        </div>
+        <p class="font-medium">-10 &deg;C</p>
+      </div>
+
+
+      <div class="flex flex-row gap-4 items-center p-4">
+        <div class="flex flex-col text-center">
+          <span class="material-symbols-outlined text-4xl text-slate-500">
             humidity_percentage
           </span>
         </div>
-        <p>80 %</p>
+        <p class="font-medium">80 %</p>
       </div>
 
       <div class="flex flex-row gap-4 items-center p-4">
         <div class="flex flex-col text-center">
-          <span class="material-symbols-outlined text-4xl text-grey-400">
+          <span class="material-symbols-outlined text-4xl text-slate-500">
             air
           </span>
         </div>
-        <p>4 km/h</p>
+        <p class="font-medium">4 km/h</p>
       </div>
     </div>
   </div>
