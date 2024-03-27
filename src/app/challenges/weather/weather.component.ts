@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [CommonModule, MatIconModule],
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.scss'],
 })
 export class WeatherComponent {
   public isDay = true;
