@@ -11,7 +11,7 @@ const MINUTE_IN_MILIS = 60000;
   templateUrl: './weather.component.html',
 })
 export class WeatherComponent {
-  public isDay = true;
+  public isDay = new Date().getHours() < 12;
 
   public bgURL = this.isDay
     ? "bg-[url('/assets/images/weather/day.jpg')]"
