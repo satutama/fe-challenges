@@ -17,6 +17,8 @@ export class WeatherComponent {
     ? "bg-[url('/assets/images/weather/day.jpg')]"
     : "bg-[url('/assets/images/weather/night.jpg')]";
 
+  public bgColor = this.isDay ? 'bg-orange-700' : 'bg-sky-700';
+
   public today: Observable<number> = interval(MINUTE_IN_MILIS).pipe(
     startWith(0),
     map(() => Date.now())
