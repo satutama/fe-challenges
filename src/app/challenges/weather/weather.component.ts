@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Observable, interval, map, startWith } from 'rxjs';
+import { Observable, interval, map, of, startWith } from 'rxjs';
 
 const MINUTE_IN_MILIS = 60000;
 @Component({
@@ -23,4 +23,8 @@ export class WeatherComponent {
     startWith(0),
     map(() => Date.now())
   );
+
+  public search(): Observable<any> {
+    return of({});
+  }
 }
